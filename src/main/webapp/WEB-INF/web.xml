@@ -4,4 +4,23 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <!-- 配置servlet信息 -->
+  <servlet>
+    <!-- 配置servlet名称，名字必须唯一 -->
+    <servlet-name>ServletDemo</servlet-name>
+    <!-- 配置Servlet的完全路径（包名+类名） -->
+    <servlet-class>com.skyhuang.study.servlet.ServletDemo</servlet-class>
+  </servlet>
+  <!-- 配置Servlet映射（访问路径） -->
+  <servlet-mapping>
+    <!-- 配置Servlet名称，和上面的名称必须相同 -->
+    <servlet-name>ServletDemo</servlet-name>
+    <!-- 配置虚拟路径（访问路径） -->
+    <url-pattern>/servletDemo</url-pattern>
+  </servlet-mapping>
+
+
+
+
 </web-app>
