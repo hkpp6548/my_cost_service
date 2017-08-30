@@ -4,14 +4,49 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <!-- 配置全局初始化参数 -->
+  <context-param>
+    <param-name>encoding</param-name>
+    <param-value>utf-8</param-value>
+  </context-param>
 
   <!-- 配置servlet信息 -->
   <servlet>
-    <!-- 配置servlet名称，名字必须唯一 -->
+    <!-- 配置servlet名称，名字必须唯一 下面映射有对应的 -->
     <servlet-name>ServletDemo</servlet-name>
     <!-- 配置Servlet的完全路径（包名+类名） -->
     <servlet-class>com.skyhuang.study.servlet.ServletDemo</servlet-class>
   </servlet>
+
+  <servlet>
+    <servlet-name>GenericServletDemo</servlet-name>
+    <servlet-class>com.skyhuang.study.servlet.GenericServletDemo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HttpServletDemo</servlet-name>
+    <servlet-class>com.skyhuang.study.servlet.HttpServletDemo</servlet-class>
+    <!-- 服务器启动的时候就初始化 -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>HttpServletConfigDemo</servlet-name>
+    <servlet-class>com.skyhuang.study.servlet.HttpServletConfigDemo</servlet-class>
+    <init-param>
+      <param-name>username</param-name>
+      <param-value>hk</param-value>
+    </init-param>
+    <init-param>
+      <param-name>password</param-name>
+      <param-value>123456</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>HttpServletContextDemo</servlet-name>
+    <servlet-class>com.skyhuang.study.servlet.HttpServletContextDemo</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+
   <!-- 配置Servlet映射（访问路径） -->
   <servlet-mapping>
     <!-- 配置Servlet名称，和上面的名称必须相同 -->
@@ -19,8 +54,21 @@
     <!-- 配置虚拟路径（访问路径） -->
     <url-pattern>/servletDemo</url-pattern>
   </servlet-mapping>
-
-
-
+  <servlet-mapping>
+    <servlet-name>GenericServletDemo</servlet-name>
+    <url-pattern>/genericServletDemo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HttpServletDemo</servlet-name>
+    <url-pattern>/httpServletDemo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HttpServletConfigDemo</servlet-name>
+    <url-pattern>/httpServletConfigDemo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HttpServletContextDemo</servlet-name>
+    <url-pattern>/httpServletContextDemo</url-pattern>
+  </servlet-mapping>
 
 </web-app>

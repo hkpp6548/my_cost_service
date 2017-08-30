@@ -4,6 +4,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /** 实现Servlet接口
+ *  生命周期
  * Created by hk on 2017/8/29.
  */
 public class ServletDemo implements Servlet{
