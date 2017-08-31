@@ -27,6 +27,12 @@
       <version>2.1</version>
       <scope>provided</scope>
     </dependency>
+    <!-- mysql jdbc依赖 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-Java</artifactId>
+      <version>5.0.5</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>my_cost_service</finalName>

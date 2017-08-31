@@ -17,7 +17,7 @@ public class HttpServletContextDemo extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取ServletContext
         ServletContext servletContext = getServletContext();
-        //getInitParameter()
+        //getInitParameter() 获取全局初始化对象
         String eccoding = servletContext.getInitParameter("encoding");
         System.out.println("getInitParameter eccoding:" + eccoding);
         //getInitParameterNames()
@@ -27,21 +27,19 @@ public class HttpServletContextDemo extends HttpServlet {
             String value = servletContext.getInitParameter(name);
             System.out.println("getInitParameterNames :" + name +"-value:"+value);
         }
-        int showCount = 1;
-        Object count = servletContext.getAttribute("count");
-        if (count == null) {
-            servletContext.setAttribute("count",1);
-        } else {
-            Integer count1 = (Integer) count;
-            servletContext.setAttribute("count",++count1);
-            showCount = count1;
-            System.out.println("被访问：" + count1 + "次");
-        }
-        //read5();
-       // read2();
-
+        int count = (Integer)servletContext.getAttribute("count");
+        // 存入到域对象中
+        servletContext.setAttribute("count", ++count);
+        read5();
+       // read2()
         resp.setContentType("text/html;charset=UTF-8");
-        resp.getWriter().write("ServletContextServlet:被访问" + showCount + "次。");
+        resp.getWriter().write("HttpServletContextDemo被访问,总被访问次数：" + count);
+        // 页面1秒会跳转
+        //resp.setHeader("refresh", "1;url=/httpServletConfigDemo");
+        //和location和302一起完成重定向
+        resp.setStatus(302);
+        // 告诉我富班长的地址
+        resp.setHeader("location", "/httpServletConfigDemo");
     }
 
     @Override
@@ -61,10 +59,9 @@ public class HttpServletContextDemo extends HttpServlet {
      * @throws IOException
      */
     public void read5() throws IOException{
-        // 获取对象
-        String path = getServletContext().getRealPath("/WEB-INF/classes/db.properties");
-        // System.out.println(path);
-        // C:\apache-tomcat-6.0.14\webapps\day09\WEB-INF\classes\db.properties
+        // 获取需要读取文件的路径
+        //servletContext.getRealPath("/");此时会获取编译后web文件夹的路径
+        String path = getServletContext().getRealPath("/WEB-INF/classes/test.properties");
         System.out.println("运行时路径：" + path);
         // 获取输入流
         InputStream in = new FileInputStream(path);
@@ -77,21 +74,29 @@ public class HttpServletContextDemo extends HttpServlet {
      * @throws IOException
      */
     public void print(InputStream in) throws IOException{
+        //在Java中，配置文件常为.properties文件,格式为文本文件，文件的内容的格式是“键=值”的格式，文本注释信息可以用"#"来注释。
+        //可以用Properties类可以用来读取。
+        //1． getProperty ( String key)，用指定的键在此属性列表中搜索属性。也就是通过参数 key ，得到 key 所对应的 value。
+        //2． load ( InputStream inStream)，从输入流中读取属性列表（键和元素对）。
+        // 通过对指定的文件（比如说上面的 test.properties 文件）进行装载来获取该文件中的所有键 - 值对。以供 getProperty ( String key) 来搜索。
+        //3． setProperty ( String key, String value) ，调用 Hashtable 的方法 put 。他通过调用基类的put方法来设置 键 - 值对。
+        //4． store ( OutputStream out, String comments)，以适合使用 load 方法加载到 Properties 表中的格式，
+        // 将此 Properties 表中的属性列表（键和元素对）写入输出流。与 load 方法相反，该方法将键 - 值对写入到指定的文件中去。
+        //5． clear ()，清除所有装载的 键 - 值对。该方法在基类中提供。
         Properties pro = new Properties();
-        // 加载
         pro.load(in);
-        pro.setProperty("test","34");
-        OutputStream out = new FileOutputStream("E:\\ePLD\\my\\myServlet\\out\\artifacts\\myServlet_war_exploded\\WEB-INF\\classes\\db.properties");
-        pro.store(out, "test");//写入参数
+        in.close();
+        Enumeration<Object> keys = pro.keys();
+        while (keys.hasMoreElements()) {
+            String key = (String)keys.nextElement();
+            String propertyValue = pro.getProperty(key);
+            System.out.println("key:"+key+",value:"+propertyValue);
+        }
+        pro.setProperty("test1","34");
+        String realPath = getServletContext().getRealPath("/WEB-INF/classes/test.properties");
+        OutputStream out = new FileOutputStream(realPath);
+        pro.store(out, "test1");//写入参数
         out.close();
-        // 获取文件中的内容
-        String username = pro.getProperty("username");
-        String password = pro.getProperty("password");
-        String desc = pro.getProperty("desc");
-
-        System.out.println("用户名："+username);
-        System.out.println("密码："+password);
-        System.out.println("描述："+desc);
     }
 
     /**
@@ -99,7 +104,7 @@ public class HttpServletContextDemo extends HttpServlet {
      * @throws IOException
      */
     public void read2() throws IOException{
-        // ServletContext读取文件
+        // ServletContext读取文件 getServletContext().getResourceAsStream();直接获取输入流。
         InputStream in = getServletContext().getResourceAsStream("/WEB-INF/classes/db.properties");
         // 打印方式
         print(in);

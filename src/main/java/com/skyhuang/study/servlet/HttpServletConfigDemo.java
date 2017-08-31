@@ -31,19 +31,11 @@ public class HttpServletConfigDemo extends HttpServlet {
             System.out.println("参数名称："+name+",参数值："+value);
         }
         ServletContext servletContext = getServletContext();
-        int showCount = 1;
-        Object count = servletContext.getAttribute("count");
-        if (count == null) {
-            servletContext.setAttribute("count",1);
-        } else {
-            Integer count1 = (Integer) count;
-            servletContext.setAttribute("count",++count1);
-            showCount = count1;
-            System.out.println("被访问：" + count1 + "次");
-        }
+        int count = (Integer)servletContext.getAttribute("count");
+        servletContext.setAttribute("count",++count);
         resp.setContentType("text/html;charset=UTF-8");
-        resp.getWriter().write("ServletConfigServlet:被访问" + showCount + "次。");
-
+        resp.getWriter().write("HttpServletConfigDemo:被访问,总被访问次数：" + count);
+        resp.setHeader("refresh", "1;url=/httpServletContextDemo");
     }
 
     @Override
