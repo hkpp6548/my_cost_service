@@ -45,6 +45,14 @@
     <servlet-class>com.skyhuang.study.servlet.HttpServletContextDemo</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <servlet>
+    <servlet-name>ErrorServlet</servlet-name>
+    <servlet-class>com.skyhuang.study.servlet.ErrorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestServlet</servlet-name>
+    <servlet-class>com.skyhuang.study.servlet.RequestServlet</servlet-class>
+  </servlet>
 
 
   <!-- 配置Servlet映射（访问路径） -->
@@ -69,6 +77,14 @@
   <servlet-mapping>
     <servlet-name>HttpServletContextDemo</servlet-name>
     <url-pattern>/httpServletContextDemo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ErrorServlet</servlet-name>
+    <url-pattern>/errorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestServlet</servlet-name>
+    <url-pattern>/requestServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
