@@ -45,27 +45,4 @@ public class MD5Utils {
         }
     }
 
-    public static void main(String[] args) {
-        String needEncoder = "1234561";//123456(信息)对应4QrcOUm6Wau+VuBX8g+IPg==(摘要)
-        try {
-            //加密
-            String encoderByMd5 = encoderByMd5(needEncoder);
-            System.out.println(encoderByMd5);
-            String databaseStr = "4QrcOUm6Wau+VuBX8g+IPg==";
-            //验证用户密码
-            boolean checkPassWord = checkPassWord(needEncoder, databaseStr);
-            if (checkPassWord) {
-                System.out.println("用户密码正确！");
-            } else {
-                System.out.println("用户密码不正确！");
-            }
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-    }
-
 }
