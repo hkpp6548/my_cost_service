@@ -1,7 +1,10 @@
 package com.skyhuang.study.jdbc;
 
+import com.skyhuang.study.Annotation.JdbcConnectionAnnotation;
 import com.skyhuang.utils.PropertyUtils;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.ResourceBundle;
 
@@ -50,6 +53,34 @@ public class JdbcUtils {
         if(resultSet != null){
             resultSet.close();
         }
+    }
+
+    /**
+     * 使用注解获取数据库连接信息
+     * @return
+     * @throws SQLException
+     * @throws NoSuchMethodException
+     */
+    //@JdbcConnectionAnnotation
+    @JdbcConnectionAnnotation(driverClass = "com.mysql.jdbc.Driver",
+        url = "jdbc:mysql://localhost:3306/testone?useSSL=false&characterEncoding=utf-8",
+        userName = "root",
+        password = "root")
+    public static Connection getConnectionByAnnotation() throws SQLException, NoSuchMethodException {
+        //通过反射取出注解
+        //1.获取Class对象
+        Class<JdbcUtils> jdbcUtilsClass = JdbcUtils.class;
+        //2.通过反射获取方法对象
+        Method getConnectionByAnnotation = jdbcUtilsClass.getDeclaredMethod("getConnectionByAnnotation");
+        //3.通过方法取得注解对象
+        JdbcConnectionAnnotation annotation = getConnectionByAnnotation.getAnnotation(JdbcConnectionAnnotation.class);
+        //4.通过注解的方法取出各个参数值
+        String driverClass = annotation.driverClass();//驱动在加载类的时候静态代码块自动加载了，否则需要Class.forName(driverClass)先加载驱动
+        String url = annotation.url();
+        String userName = annotation.userName();
+        String password = annotation.password();
+        //5.获取连接
+        return DriverManager.getConnection(url,userName,password);
     }
 
 
