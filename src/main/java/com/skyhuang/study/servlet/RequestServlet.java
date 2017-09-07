@@ -29,6 +29,8 @@ public class RequestServlet extends HttpServlet {
         // 做操作
         System.out.println("请求头："+referer);
         System.out.println("判断浏览器："+agent);
+        resp.setContentType("text/html;charset=utf-8");
+        resp.getWriter().write("访问RequestServlet");
     }
 
     @Override
