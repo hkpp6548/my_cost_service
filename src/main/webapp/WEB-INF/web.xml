@@ -53,10 +53,7 @@
     <servlet-name>RequestServlet</servlet-name>
     <servlet-class>com.skyhuang.study.servlet.RequestServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.skyhuang.web.LoginSrevlet</servlet-class>
-  </servlet>
+
 
   <!-- 配置Servlet映射（访问路径） -->
   <servlet-mapping>
@@ -83,15 +80,12 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ErrorServlet</servlet-name>
-    <url-pattern>/errorServlet</url-pattern>
+    <url-pattern>/errorServlet</url-pattern><!-- 这个路径会代替tomcat的默认报错路径  一般不要使用 -->
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RequestServlet</servlet-name>
     <url-pattern>/requestServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/loginServlet</url-pattern>
-  </servlet-mapping>
+
 
 </web-app>

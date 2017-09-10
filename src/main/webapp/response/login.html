@@ -6,7 +6,7 @@
 </head>
 <body>
 	
-	<form action="/day10/login" method="post">
+	<form action="/login" method="post">
 		<table border="1" width="50%">
 			<tr>
 				<td>输入姓名</td>
@@ -21,6 +21,16 @@
 				</td>
 			</tr>
 			<tr>
+				<td>请输入验证</td>
+				<td>
+					<img id="imageId" src="/code">
+					<a href="#" onclick="change();">看不清，换一张</a>
+				</td>
+				<td>
+					<input type="text" name="checkCode">
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2">
 					<input type="submit" value="登陆"/>
 				</td>
@@ -29,4 +39,11 @@
 	</form>
 
 </body>
+<script type="text/javascript">
+
+
+    function change() {
+		document.getElementById("imageId").src = "/code?" + new Date().getTime();
+    }
+</script>
 </html>

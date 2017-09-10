@@ -9,7 +9,7 @@
 <body>
 	
 	${msg}
-	<form action="/day10/login2" method="post">
+	<form action="/login" method="post">
 		<table border="1" width="50%">
 			<tr>
 				<td>输入姓名</td>
