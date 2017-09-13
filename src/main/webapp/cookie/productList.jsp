@@ -12,7 +12,10 @@
 		width: 600px;
 		height: 300px;
 	}
-
+	.img1{
+		width: 300px;
+		height: 150px;
+	}
 </style>
 
 </head>
@@ -26,6 +29,20 @@
 	<img class="img1" src="/img/cookie/6.jpg"><a href="/product?id=6" >电脑</a>
 	
 	<h3>浏览记录</h3>
+<%
+	Cookie[] cookies = request.getCookies();
+	Cookie id = CookieUtils.getCookieByName(cookies, "product");
+	if(id != null){
+		String value = id.getValue();
+		String[] ids = value.split(",");
+		for (String idName: ids) {
+			%>
+			<img class="img1" src="/img/cookie/<%= idName%>.jpg"></a>
+			<%
+		}
+	}
+
+%>
 
 	
 </body>
