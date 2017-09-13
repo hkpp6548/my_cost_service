@@ -21,14 +21,15 @@
 </head>
 <body>
 	
-	<img class="img1" src="/img/cookie/1.jpg"><a href="/product?id=1" >手电筒</a>
-	<img class="img1" src="/img/cookie/2.jpg"><a href="/product?id=2" >电话</a>
-	<img class="img1" src="/img/cookie/3.jpg"><a href="/product?id=3" >电视</a><br/>
-	<img class="img1" src="/img/cookie/4.jpg"><a href="/product?id=4" >冰箱</a>
-	<img class="img1" src="/img/cookie/5.jpg"><a href="/product?id=5" >手表</a>
-	<img class="img1" src="/img/cookie/6.jpg"><a href="/product?id=6" >电脑</a>
+	<img class="img1" src="/img/cookie/1.jpg"><a href="/cookie/product?id=1" >手电筒</a>
+	<img class="img1" src="/img/cookie/2.jpg"><a href="/cookie/product?id=2" >电话</a>
+	<img class="img1" src="/img/cookie/3.jpg"><a href="/cookie/product?id=3" >电视</a><br/>
+	<img class="img1" src="/img/cookie/4.jpg"><a href="/cookie/product?id=4" >冰箱</a>
+	<img class="img1" src="/img/cookie/5.jpg"><a href="/cookie/product?id=5" >手表</a>
+	<img class="img1" src="/img/cookie/6.jpg"><a href="/cookie/product?id=6" >电脑</a>
 	
 	<h3>浏览记录</h3>
+	<h3><a href="/cookie/remove">清楚浏览记录</a></h3>
 <%
 	Cookie[] cookies = request.getCookies();
 	Cookie id = CookieUtils.getCookieByName(cookies, "product");
