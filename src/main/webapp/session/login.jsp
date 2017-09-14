@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +10,7 @@
 <body>
 
 ${msg }
-<form action="/day11/login" method="post">
+<form action="/session/checkcode" method="post">
 		<table border="1" width="70%">
 			<tr>
 				<td>输入姓名</td>
@@ -27,7 +28,7 @@ ${msg }
 				<td>验证码</td>
 				<td>
 					<input type="text" name="code" />
-					<img id="imgId" src="/day11/checkcode">
+					<img id="imgId" src="/session/code">
 					<a href="#" onclick="run()">看不清，换一张</a>
 				</td>
 			</tr>
@@ -44,7 +45,7 @@ ${msg }
 		function run(){
 			// 获取图片
 			var image = document.getElementById("imgId");
-			image.src = "/day11/checkcode?"+new Date().getTime();
+			image.src = "/session/code?"+new Date().getTime();
 		}
 	
 	</script>
