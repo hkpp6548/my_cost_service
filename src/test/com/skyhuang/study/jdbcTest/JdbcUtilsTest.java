@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * Created by hk on 2017/9/5.
  */
-public class jdbcUtilsTest {
+public class JdbcUtilsTest {
 
     @Test
     public void getConnectionByAnnotationTest(){

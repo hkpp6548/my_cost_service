@@ -10,7 +10,7 @@
 <body>
 
 ${msg }
-<form action="/session/checkcode" method="post">
+<form action="${pageContext.request.contextPath}/session/checkcode" method="post">
 		<table border="1" width="70%">
 			<tr>
 				<td>输入姓名</td>

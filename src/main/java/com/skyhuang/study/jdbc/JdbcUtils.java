@@ -33,25 +33,56 @@ public class JdbcUtils {
         }
     }
 
+    /**
+     * 获取Connection
+     * @return
+     * @throws SQLException
+     */
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 
+    /**
+     * 关闭Connection
+     * @param connection
+     * @throws SQLException
+     */
     public static void closeConnection(Connection connection) throws SQLException {
         if(connection != null) {
             connection.close();
         }
     }
 
+    /**
+     * 关闭Statement
+     * @param statement
+     * @throws SQLException
+     */
     public static void closeStatement(Statement statement) throws SQLException {
         if(statement != null){
             statement.close();
         }
     }
 
+    /**
+     * 关闭ResultSet
+     * @param resultSet
+     * @throws SQLException
+     */
     public static void closeResultSet(ResultSet resultSet) throws SQLException {
         if(resultSet != null){
             resultSet.close();
+        }
+    }
+
+    /**
+     * 关闭PreparedStatement
+     * @param preparedStatement
+     * @throws SQLException
+     */
+    public static void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
+        if(preparedStatement != null){
+            preparedStatement.close();
         }
     }
 
@@ -82,7 +113,5 @@ public class JdbcUtils {
         //5.获取连接
         return DriverManager.getConnection(url,userName,password);
     }
-
-
 
 }

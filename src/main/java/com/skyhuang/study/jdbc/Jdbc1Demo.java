@@ -1,9 +1,8 @@
 package com.skyhuang.study.jdbc;
 
-import java.io.IOException;
 import java.sql.*;
 
-/**
+/** jdbc使用实例
  * Created by hk on 2017/8/31.
  */
 public class Jdbc1Demo {
@@ -12,11 +11,11 @@ public class Jdbc1Demo {
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        insertDemo();
-        queryDemo2();
-    }
-
+    /**
+     * 最初始版查询示例
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static void queryDemo()throws SQLException, ClassNotFoundException{
         // 1.注册驱动
         //DriverManager.deregisterDriver(new Driver());//加载了两个驱动
@@ -42,6 +41,11 @@ public class Jdbc1Demo {
         connection.close();
     }
 
+    /**
+     * jdbc更新操作
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static void updateDemo()throws SQLException, ClassNotFoundException{
         // 1.注册驱动
         //DriverManager.deregisterDriver(new Driver());//加载了两个驱动
@@ -60,6 +64,9 @@ public class Jdbc1Demo {
         connection.close();
     }
 
+    /**
+     * 使用JdbcUtils进行查询示例
+     */
     public static void queryDemo2(){
         Connection connection = null;
         Statement statement = null;
@@ -79,10 +86,18 @@ public class Jdbc1Demo {
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
+            //7.释放资源
             try {
-                //7.释放资源
                 JdbcUtils.closeResultSet(resultSet);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
                 JdbcUtils.closeStatement(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
                 JdbcUtils.closeConnection(connection);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -90,6 +105,48 @@ public class Jdbc1Demo {
         }
     }
 
+    /**
+     * 使用JdbcUtils和PreparedStatement进行查询。
+     */
+    public static void queryDemo3(){
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            con = JdbcUtils.getConnection();
+            String sql = "SELECT * FROM a WHERE aid = ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1,"111");
+            rs = ps.executeQuery();
+            if(rs.next()){
+                System.out.println("查询成功，有数据");
+            }else{
+                System.out.println("没有数据");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                JdbcUtils.closeResultSet(rs);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                JdbcUtils.closeConnection(con);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 使用JdbcUtils进行插入操作
+     */
     public static void insertDemo(){
         Connection connection = null;
         Statement statement = null;
@@ -109,6 +166,10 @@ public class Jdbc1Demo {
             try {
                 //7.释放资源
                 JdbcUtils.closeStatement(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
                 JdbcUtils.closeConnection(connection);
             } catch (SQLException e) {
                 e.printStackTrace();
