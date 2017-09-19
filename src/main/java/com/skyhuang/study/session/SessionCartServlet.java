@@ -11,16 +11,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/** 简单的购物车
+/** session简单的购物车
  * Created by dahoufang the one on 2017/9/14.
  */
 @WebServlet(name = "SessionCartServlet",urlPatterns = "/session/cart")
 public class SessionCartServlet extends HttpServlet {
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//获取session
 		HttpSession session = request.getSession();
 		//获取购物车。
@@ -58,6 +58,12 @@ public class SessionCartServlet extends HttpServlet {
 			if(has == 0){
 				oldCart.put(productName, 1);
 			}
+			/*if(names.contains(productName)){
+
+			}else{
+
+			}*/
+			//将购物车放入session中
 			session.setAttribute("cart", oldCart);
 		}
 		// 继续购物或者结算
