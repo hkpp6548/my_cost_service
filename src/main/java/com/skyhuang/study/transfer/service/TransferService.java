@@ -48,9 +48,10 @@ public class TransferService {
 				try {
 					connection.commit();
 					//使用自定义连接池不关闭，放回连接池
-					myDataSource.addConnection(connection);
+					//myDataSource.addConnection(connection)
+// Connection对象如果是从连接池中获取到的，那么它的close方法的行为已经改变了，不在是销毁，而是重新装入到连接池。
+					connection.close();
 					myDataSource.getConnSize();
-					//connection.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

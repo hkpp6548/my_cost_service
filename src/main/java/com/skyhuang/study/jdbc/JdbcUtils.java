@@ -27,7 +27,7 @@ public class JdbcUtils {
     private static final ThreadLocal<Connection> threadLocal = new ThreadLocal<Connection>();
 
     static {
-        DRIVERCLASS = PropertyUtils.getPropertyValue("datasrc.properties","driver_class_name");
+        DRIVERCLASS = PropertyUtils.getPropertyValue("datasrc.properties","driverClassName");
         URL = PropertyUtils.getPropertyValue("datasrc.properties","url");
         USERNAME = PropertyUtils.getPropertyValue("datasrc.properties","username");
         PASSWORD = PropertyUtils.getPropertyValue("datasrc.properties","password");

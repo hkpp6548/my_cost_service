@@ -17,6 +17,14 @@ public class PropertyUtils {
         return properties.getProperty(keyName).trim();
     }
 
+    public static Properties getProperties(String path) throws IOException {
+        InputStream is = PropertyUtils.class.getClassLoader().getResourceAsStream(path);
+        Properties properties = new Properties();
+        properties.load(is);
+        is.close();
+        return properties;
+    }
+
     public static String getPropertyValue(String path, String keyName){
         InputStream is = PropertyUtils.class.getClassLoader().getResourceAsStream(path);
         Properties properties = new Properties();

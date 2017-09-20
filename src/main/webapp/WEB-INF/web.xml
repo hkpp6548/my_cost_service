@@ -9,8 +9,12 @@
     <param-name>encoding</param-name>
     <param-value>utf-8</param-value>
   </context-param>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/c3p0-config.xml</param-value>
+    </context-param>
 
-  <!-- 配置servlet信息 -->
+    <!-- 配置servlet信息 -->
   <servlet>
     <!-- 配置servlet名称，名字必须唯一 下面映射有对应的 -->
     <servlet-name>ServletDemo</servlet-name>
@@ -53,9 +57,14 @@
     <servlet-name>RequestServlet</servlet-name>
     <servlet-class>com.skyhuang.study.servlet.RequestServlet</servlet-class>
   </servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
 
-  <!-- 配置Servlet映射（访问路径） -->
+    <!-- 配置Servlet映射（访问路径） -->
   <servlet-mapping>
     <!-- 配置Servlet名称，和上面的名称必须相同 -->
     <servlet-name>ServletDemo</servlet-name>
@@ -86,8 +95,12 @@
     <servlet-name>RequestServlet</servlet-name>
     <url-pattern>/requestServlet</url-pattern>
   </servlet-mapping>
-  
-  <welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
