@@ -1,6 +1,8 @@
 package com.skyhuang.study.transfer.service;
 
+import com.skyhuang.study.jdbc.Jdbc1Demo;
 import com.skyhuang.study.jdbc.JdbcUtils;
+import com.skyhuang.study.myDatasource.MyDataSource;
 import com.skyhuang.study.transfer.dao.TransferDaoImpl;
 import com.skyhuang.study.transfer.exception.TransferException;
 
@@ -15,11 +17,22 @@ public class TransferService {
 	public void transfer(String accountin, String accountout, double money) throws TransferException {
 		TransferDaoImpl transferDao = new TransferDaoImpl();
 		Connection connection = null;
+		MyDataSource myDataSource = null;
 		try {
-			connection = JdbcUtils.getConnection();
+			myDataSource = new MyDataSource();
+			//从自定义连接池中获取连接
+			connection = myDataSource.getConnection();
+
+			//connection = JdbcUtils.getConnection();
 			connection.setAutoCommit(false);//开启手动事物
 			transferDao.rollOut(connection, accountout,money);
 			transferDao.rollIn(connection, accountin, money);
+
+			//通过ThreadLocal，来获取相同的connection
+			/*connection = JdbcUtils.getConnectionByThreadLocal();
+			connection.setAutoCommit(false);
+			transferDao.rollOutByThreadLocal(accountout,money);
+			transferDao.rollInByThreadLocal(accountin, money);*/
 		} catch (Exception e) {
 			e.printStackTrace();
 			if(connection != null){
@@ -34,7 +47,10 @@ public class TransferService {
 			if(connection != null){
 				try {
 					connection.commit();
-					connection.close();
+					//使用自定义连接池不关闭，放回连接池
+					myDataSource.addConnection(connection);
+					myDataSource.getConnSize();
+					//connection.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

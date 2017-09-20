@@ -17,6 +17,15 @@ public class JdbcUtils {
     private static final String USERNAME;
     private static final String PASSWORD;
 
+    /**
+        ThreadLocal可以理解成是一个Map集合
+        Map<Thread,Object>
+        set方法是向ThreadLocal中存储数据，那么当前的key值就是当前线程对象.
+        get方法是从ThreadLocal中获取数据，它是根据当前线程对象来获取值。
+        如果我们是在同一个线程中，只要在任意的一个位置存储了数据，在其它位置上，就可以获取到这个数据。
+     */
+    private static final ThreadLocal<Connection> threadLocal = new ThreadLocal<Connection>();
+
     static {
         DRIVERCLASS = PropertyUtils.getPropertyValue("datasrc.properties","driver_class_name");
         URL = PropertyUtils.getPropertyValue("datasrc.properties","url");
@@ -40,6 +49,21 @@ public class JdbcUtils {
      */
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    }
+
+    /**
+     * 通过ThreadLocal在一个线程中获取相同的线程
+     * @return
+     * @throws SQLException
+     */
+    public static Connection getConnectionByThreadLocal() throws SQLException {
+        Connection connection = threadLocal.get();
+        if(connection == null){
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            threadLocal.set(connection);
+            return threadLocal.get();
+        }
+        return connection;
     }
 
     /**

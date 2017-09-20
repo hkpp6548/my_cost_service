@@ -14,8 +14,9 @@ public class TestController {
 	{
 		try
 		{
-			String ts = "2007-10-23T17:15:44.000";
+			String ts = "2017-09-20T18:00:00.000";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+												       //yyyy-mm-dd'T'HH:mm:ss.SSS
 			Date dt = sdf.parse(ts);
 			long time = dt.getTime();
 			String s = String.valueOf(time);

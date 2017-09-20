@@ -14,4 +14,8 @@ public interface TransferDao {
 
 	public void rollOut(Connection connection,String account,Double money) throws SQLException, TransferException;
 
+	public void rollInByThreadLocal(String account, Double money) throws SQLException, TransferException;
+
+	public void rollOutByThreadLocal(String account, Double money) throws SQLException, TransferException;
+
 }
