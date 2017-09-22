@@ -1,6 +1,6 @@
 package com.skyhuang.study.myDatasource.zengqiang;
 
-/**使用装饰进行增强
+/** 使用装饰增强方法的功能
  * Created by hk on 2017/9/20.
  */
 public class Demo2 {
@@ -36,7 +36,6 @@ class CarDerector implements Car{
         System.out.println("添加导航的功能");
         car.run();
     }
-
 }
 
 
