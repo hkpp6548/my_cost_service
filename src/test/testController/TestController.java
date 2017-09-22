@@ -12,6 +12,9 @@ import java.util.TimeZone;
 public class TestController {
 	public static void main (String args[])
 	{
+
+		int a  = 2 << 3;
+		System.out.println(a);
 		try
 		{
 			String ts = "2017-09-20T18:00:00.000";
