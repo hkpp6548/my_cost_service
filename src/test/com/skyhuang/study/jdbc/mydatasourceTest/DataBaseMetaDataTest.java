@@ -8,7 +8,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/** 数据库元数据
+/** 数据库元数据  元数据(metaData)  指数据库中 库、表、列的定义信息
  * Created by hk on 2017/9/22.
  */
 public class DataBaseMetaDataTest {
