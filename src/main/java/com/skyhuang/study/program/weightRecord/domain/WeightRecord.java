@@ -10,14 +10,16 @@ public class WeightRecord {
 	private int id;
 	/** 日期  */
 	private Date date;
-	/** 跑步前体重 */
+	/** 跑步前体重（斤） */
 	private double runAgoWeight;
-	/** 跑步后体重 */
+	/** 跑步后体重（斤） */
 	private double runAfterWeight;
-	/** 洗澡后体重  */
+	/** 洗澡后体重（斤） */
 	private double bathAfterWeight;
-	/** 睡觉前体重  */
+	/** 睡觉前体重（斤） */
 	private double sleepAgoWeight;
+	/** 是否跑步 */
+	private int isRun;
 
 	public int getId() {
 		return id;
@@ -65,5 +67,26 @@ public class WeightRecord {
 
 	public void setSleepAgoWeight(double sleepAgoWeight) {
 		this.sleepAgoWeight = sleepAgoWeight;
+	}
+
+	public int getIsRun() {
+		return isRun;
+	}
+
+	public void setIsRun(int isRun) {
+		this.isRun = isRun;
+	}
+
+	@Override
+	public String toString() {
+		return "WeightRecord{" +
+				"id=" + id +
+				", date=" + date +
+				", runAgoWeight=" + runAgoWeight +
+				", runAfterWeight=" + runAfterWeight +
+				", bathAfterWeight=" + bathAfterWeight +
+				", sleepAgoWeight=" + sleepAgoWeight +
+				", isRun=" + isRun +
+				'}';
 	}
 }
