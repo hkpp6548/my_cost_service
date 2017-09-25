@@ -26,16 +26,13 @@ public class ResultSetHandlerTest {
 
             //重写handle方法，在这个方法中确定，怎样将结果集封装。
             public Account handle(ResultSet rs) throws SQLException {
-
                 Account a = null;
-
                 if (rs.next()) {
                     a = new Account();
                     a.setId(rs.getInt("id"));
                     a.setAccount(rs.getString("account"));
                     a.setMoney(rs.getDouble("money"));
                 }
-
                 return a;
             }
         }, 2);

@@ -3,6 +3,7 @@ package com.skyhuang.study.jdbc.mydatasourceTest;
 import com.skyhuang.domain.Account;
 import com.skyhuang.study.jdbc.DataSourceUtils;
 import com.skyhuang.study.jdbc.JdbcUtils;
+import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/** dbutils-简单的jdbc封装工具
  * Created by hk on 2017/9/24.
  */
 public class DbutilsTest {
@@ -40,7 +41,6 @@ public class DbutilsTest {
             });*/
             List<Account> accounts = queryRunner.query(JdbcUtils.getConnection(), sql,
                     new BeanListHandler<Account>(Account.class));
-
             for (Account acc: accounts) {
                 System.out.println(acc);
             }
@@ -57,7 +57,6 @@ public class DbutilsTest {
         if(skyhuang > 0){
             System.out.println("插入成功！");
         }
-
     }
 
     @Test
@@ -67,9 +66,9 @@ public class DbutilsTest {
         QueryRunner runner = new QueryRunner(); // 事务手动控制
         Connection con = DataSourceUtils.getConnection();
         // con.setAutoCommit(false);
-        List<Account> list = runner.query(con, sql,
-                new BeanListHandler<Account>(Account.class),2,"ccc");
+        List<Account> list = runner.query(con, sql, new BeanListHandler<Account>(Account.class),2,"ccc");
         // con.rollback();
+        //DbUtils.close(con);
         System.out.println(list);
     }
 
@@ -78,10 +77,8 @@ public class DbutilsTest {
     public void fun2() throws SQLException {
         String sql = "select * from account where id=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource()); // 自动事务
-        List<Account> list = runner.query(sql, new BeanListHandler<Account>(
-                Account.class),2);
+        List<Account> list = runner.query(sql, new BeanListHandler<Account>(Account.class),2);
         System.out.println(list);
     }
-
 
 }
