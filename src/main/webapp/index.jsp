@@ -1,5 +1,13 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>欢迎访问skyhuang首页</title>
+</head>
 <body>
-<h2>第一次打包web应用到阿里云</h2>
+    <h2>欢迎访问凯哥的个人空间，您可以进行以下活动！</h2>
+    <a href="${pageContext.request.contextPath}/weightRecord/list" >个人体重记录</a>
 </body>
 </html>

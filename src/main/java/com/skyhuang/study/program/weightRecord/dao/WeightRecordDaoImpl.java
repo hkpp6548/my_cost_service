@@ -3,6 +3,7 @@ package com.skyhuang.study.program.weightRecord.dao;
 import com.skyhuang.study.jdbc.DataSourceUtils;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
@@ -22,11 +23,26 @@ public class WeightRecordDaoImpl implements WeightRecordDao {
         return list;
     }
 
+    public WeightRecord selectById(int id) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String selectById = "select * from weight_record where id=?";
+        WeightRecord query = queryRunner.query(selectById, new BeanHandler<WeightRecord>(WeightRecord.class), id);
+        return query;
+    }
+
     public void insert(WeightRecord wr) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String insertSql = "insert into weight_record(id, date, run_ago_weight, run_after_weight, bath_after_weight, " +
-                "sleep_ago_weight, is_run) values (null,?,?,?,?,?,?)";
+        String insertSql = "insert into weight_record(id, date, runAgoWeight, runAfterWeight, bathAfterWeight, " +
+                "sleepAgoWeight, isRun) values (null,?,?,?,?,?,?)";
         queryRunner.update(insertSql, wr.getDate(), wr.getRunAgoWeight(),
                 wr.getRunAfterWeight(), wr.getBathAfterWeight(), wr.getSleepAgoWeight(), wr.getIsRun());
+    }
+
+    public void updataById(WeightRecord wr) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String updateByIdSql = "update weight_record set date=?,runAgoWeight=?,runAfterWeight=?,bathAfterWeight=?," +
+                "sleepAgoWeight=?,isRun=? where id=?";
+        queryRunner.update(updateByIdSql, wr.getDate(), wr.getRunAgoWeight(), wr.getRunAfterWeight(),
+                wr.getBathAfterWeight(), wr.getSleepAgoWeight(), wr.getIsRun(), wr.getId());
     }
 }

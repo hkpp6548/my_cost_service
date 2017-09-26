@@ -3,9 +3,11 @@ package com.skyhuang.study.jdbc.mydatasourceTest;
 import com.skyhuang.domain.Account;
 import com.skyhuang.study.jdbc.DataSourceUtils;
 import com.skyhuang.study.jdbc.JdbcUtils;
+import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
 
@@ -79,6 +81,14 @@ public class DbutilsTest {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource()); // 自动事务
         List<Account> list = runner.query(sql, new BeanListHandler<Account>(Account.class),2);
         System.out.println(list);
+    }
+
+    @Test
+    public void fun3() throws SQLException {
+        String sql = "select * from weight_record";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        WeightRecord query = runner.query(sql, new BeanHandler<WeightRecord>(WeightRecord.class));
+        System.out.println(query);
     }
 
 }

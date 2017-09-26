@@ -11,9 +11,12 @@ import java.util.List;
 public interface WeightRecordDao {
     //查询
     public List<WeightRecord> selectAll() throws SQLException;
+    //根据id查询
+    public WeightRecord selectById(int id) throws SQLException;
     //新增
     public void insert(WeightRecord weightRecord) throws SQLException;
     //修改
+    public void updataById(WeightRecord weightRecord) throws SQLException;
     //删除
 
 }

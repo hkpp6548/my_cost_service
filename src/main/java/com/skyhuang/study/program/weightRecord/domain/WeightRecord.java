@@ -61,20 +61,20 @@ public class WeightRecord {
 		this.bathAfterWeight = bathAfterWeight;
 	}
 
-	public double getSleepAgoWeight() {
-		return sleepAgoWeight;
-	}
-
-	public void setSleepAgoWeight(double sleepAgoWeight) {
-		this.sleepAgoWeight = sleepAgoWeight;
-	}
-
 	public int getIsRun() {
 		return isRun;
 	}
 
 	public void setIsRun(int isRun) {
 		this.isRun = isRun;
+	}
+
+	public double getSleepAgoWeight() {
+		return sleepAgoWeight;
+	}
+
+	public void setSleepAgoWeight(double sleepAgoWeight) {
+		this.sleepAgoWeight = sleepAgoWeight;
 	}
 
 	@Override

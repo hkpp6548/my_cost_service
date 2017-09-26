@@ -20,4 +20,12 @@ public class WeightRecordService {
     public List<WeightRecord> selectAll() throws SQLException {
         return weightRecordDao.selectAll();
     }
+
+    public WeightRecord selectById(int id) throws SQLException {
+        return weightRecordDao.selectById(id);
+    }
+
+    public void updateById(WeightRecord weightRecord) throws SQLException {
+        weightRecordDao.updataById(weightRecord);
+    }
 }
