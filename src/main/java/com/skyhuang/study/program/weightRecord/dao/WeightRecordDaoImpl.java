@@ -15,7 +15,7 @@ import java.util.List;
 public class WeightRecordDaoImpl implements WeightRecordDao {
     public List<WeightRecord> selectAll() throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String selectAllSql = "select * from weight_record";
+        String selectAllSql = "select * from weight_record ORDER BY date";
         List<WeightRecord> list = queryRunner.query(selectAllSql, new BeanListHandler<WeightRecord>(WeightRecord.class));
         for (WeightRecord wr: list) {
             System.out.println(wr);
