@@ -28,7 +28,7 @@ public class WRSelectByIdServlet extends HttpServlet {
 		try {
 			WeightRecord wr = service.selectById(Integer.parseInt(id));
 			request.setAttribute("wr", wr);
-			request.getRequestDispatcher("/program/weightRecord/weight_record_info.jsp").forward(request,response);
+			request.getRequestDispatcher("/program/weightRecord/weight_record_update.jsp").forward(request,response);
 			return;
 
 		} catch (SQLException e) {

@@ -19,8 +19,8 @@ import java.sql.SQLException;
 /**
  * Created by dahoufang the one on 2017/9/25.
  */
-@WebServlet(name = "WeightRecordServletServlet",urlPatterns = "/weightRecord/insert")
-public class WeightRecordServletServlet extends HttpServlet {
+@WebServlet(name = "WRInsertServlet",urlPatterns = "/weightRecord/insert")
+public class WRInsertServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
 	}
@@ -28,12 +28,9 @@ public class WeightRecordServletServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-
 		WeightRecord wr = new WeightRecord();
-
 		DateConverter dc = new DateConverter(); // 这是一个日期类型转换器.
 		dc.setPattern("yyyy-MM-dd");
-
 		try {
 			ConvertUtils.register(dc, java.util.Date.class);
 			BeanUtils.populate(wr, request.getParameterMap());
@@ -43,12 +40,13 @@ public class WeightRecordServletServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		WeightRecordService service = new WeightRecordService();
-
 		try {
 			service.insert(wr);
-			response.getWriter().write("新增成功！");
+			System.out.println("新增成功！");
+			response.sendRedirect("/weightRecord/list");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("新增失败！");
 			response.getWriter().write("新增失败！");
 		}
 

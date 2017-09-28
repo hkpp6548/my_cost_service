@@ -21,6 +21,6 @@ public class RefreshServlet extends HttpServlet {
         response.getWriter().write("访问到了RefreshServlet!");
         System.out.println("访问到了RefreshServlet!");
         //页面5秒会跳转
-        response.setHeader("refresh","5;url=/test/index.jsp");
+        response.setHeader("refresh","5;url=/index.jsp");
     }
 }

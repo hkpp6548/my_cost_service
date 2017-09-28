@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>体重记录新增</title>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/weightRecord/insert" method="post">
