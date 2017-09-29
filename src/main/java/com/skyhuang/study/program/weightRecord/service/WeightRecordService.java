@@ -1,5 +1,6 @@
 package com.skyhuang.study.program.weightRecord.service;
 
+import com.skyhuang.domain.WebPager;
 import com.skyhuang.study.program.weightRecord.dao.WeightRecordDao;
 import com.skyhuang.study.program.weightRecord.dao.WeightRecordDaoImpl;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
@@ -17,8 +18,8 @@ public class WeightRecordService {
         weightRecordDao.insert(weightRecord);
     }
 
-    public List<WeightRecord> selectAll() throws SQLException {
-        return weightRecordDao.selectAll();
+    public List<WeightRecord> selectAll(WebPager pager) throws SQLException {
+        return weightRecordDao.selectAll(pager);
     }
 
     public WeightRecord selectById(int id) throws SQLException {

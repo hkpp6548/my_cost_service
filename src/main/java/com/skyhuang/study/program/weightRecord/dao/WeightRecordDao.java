@@ -1,5 +1,6 @@
 package com.skyhuang.study.program.weightRecord.dao;
 
+import com.skyhuang.domain.WebPager;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public interface WeightRecordDao {
     //查询
-    public List<WeightRecord> selectAll() throws SQLException;
+    public List<WeightRecord> selectAll(WebPager pager) throws SQLException;
     //根据id查询
     public WeightRecord selectById(int id) throws SQLException;
     //新增
