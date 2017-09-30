@@ -14,6 +14,24 @@
         <param-value>/c3p0-config.xml</param-value>
     </context-param>
 
+  <!-- 注册监听 -->
+  <listener>
+    <listener-class>com.skyhuang.study.listener.MyServletContextListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>com.skyhuang.study.listener.MyHttpSessionListener</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>com.skyhuang.study.listener.MyRequestListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>com.skyhuang.study.listener.MySessionAttributeListener</listener-class>
+  </listener>
+
+
     <!-- 配置servlet信息 -->
   <servlet>
     <!-- 配置servlet名称，名字必须唯一 下面映射有对应的 -->
