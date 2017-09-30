@@ -22,7 +22,7 @@ public class MyServletContextListener implements ServletContextListener {
 		servletContext.setAttribute("sessions", sessions);
 		Timer t = new Timer();
 		// 3.开始扫描
-		t.schedule(new TimerTask() {
+		/*t.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				System.out.println("开始扫描任务！");
@@ -36,7 +36,7 @@ public class MyServletContextListener implements ServletContextListener {
 					}
 				}
 			}
-		},1000,2000);
+		},1000,2000);*/
 	}
 
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {

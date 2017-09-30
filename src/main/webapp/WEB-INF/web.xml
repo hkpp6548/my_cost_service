@@ -14,6 +14,33 @@
         <param-value>/c3p0-config.xml</param-value>
     </context-param>
 
+  <!-- filter入门 -->
+  <!--<filter>
+    <filter-name>FilterDemo</filter-name>
+    <filter-class>com.skyhuang.study.filter.FilterDemo</filter-class>
+  </filter>-->
+
+  <!--filter链-->
+ <!-- <filter>
+    <filter-name>FilterDemo2</filter-name>
+    <filter-class>com.skyhuang.study.filter.FilterDemo2</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+
+  </filter>-->
+
+  <!--<filter-mapping>
+    <filter-name>FilterDemo</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>-->
+
+ <!-- <filter-mapping>
+    <filter-name>FilterDemo2</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>-->
+
   <!-- 注册监听 -->
   <listener>
     <listener-class>com.skyhuang.study.listener.MyServletContextListener</listener-class>
@@ -118,7 +145,7 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
-    <welcome-file-list>
+  <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
