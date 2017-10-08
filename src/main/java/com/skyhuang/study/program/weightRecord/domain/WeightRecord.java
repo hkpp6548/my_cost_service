@@ -2,7 +2,7 @@ package com.skyhuang.study.program.weightRecord.domain;
 
 import java.util.Date;
 
-/**
+/**	体重实体类
  * Created by dahoufang the one on 2017/9/25.
  */
 public class WeightRecord {

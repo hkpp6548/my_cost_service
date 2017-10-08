@@ -1,6 +1,7 @@
 package com.skyhuang.study.program.weightRecord.dao;
 
 import com.skyhuang.domain.WebPager;
+import com.skyhuang.study.program.weightRecord.domain.User;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 
 import java.sql.SQLException;
@@ -18,6 +19,9 @@ public interface WeightRecordDao {
     public void insert(WeightRecord weightRecord) throws SQLException;
     //修改
     public void updataById(WeightRecord weightRecord) throws SQLException;
+
+    public User selectUserByUsernameAndPassword(User user) throws SQLException;
+
     //删除
 
 }

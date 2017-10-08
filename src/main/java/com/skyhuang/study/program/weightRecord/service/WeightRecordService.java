@@ -3,6 +3,7 @@ package com.skyhuang.study.program.weightRecord.service;
 import com.skyhuang.domain.WebPager;
 import com.skyhuang.study.program.weightRecord.dao.WeightRecordDao;
 import com.skyhuang.study.program.weightRecord.dao.WeightRecordDaoImpl;
+import com.skyhuang.study.program.weightRecord.domain.User;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,5 +29,9 @@ public class WeightRecordService {
 
     public void updateById(WeightRecord weightRecord) throws SQLException {
         weightRecordDao.updataById(weightRecord);
+    }
+
+    public User selectUserByUsernameAndPassword(User user) throws SQLException {
+       return weightRecordDao.selectUserByUsernameAndPassword(user);
     }
 }

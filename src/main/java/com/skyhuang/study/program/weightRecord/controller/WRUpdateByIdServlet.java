@@ -2,6 +2,7 @@ package com.skyhuang.study.program.weightRecord.controller;
 
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 import com.skyhuang.study.program.weightRecord.service.WeightRecordService;
+import com.skyhuang.study.program.weightRecord.utils.CheckSessionUser;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
-/**
+/**	修改一条体重记录
  * Created by dahoufang the one on 2017/9/26.
  */
 @WebServlet(name = "WRUpdateByIdServlet",urlPatterns = "/weightRecord/updateById")
@@ -25,6 +26,9 @@ public class WRUpdateByIdServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//验证用户信息
+		CheckSessionUser.checkUser(request, response);
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		WeightRecord wr = new WeightRecord();

@@ -1,6 +1,9 @@
 package com.skyhuang.study.program.weightRecord.controller;
 
 import com.skyhuang.domain.WebPager;
+import com.skyhuang.study.program.weightRecord.utils.CheckSessionUser;
+import com.skyhuang.study.program.weightRecord.utils.StaticStringUtils;
+import com.skyhuang.study.program.weightRecord.domain.User;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 import com.skyhuang.study.program.weightRecord.service.WeightRecordService;
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +23,9 @@ import java.util.List;
 public class WRListServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //验证用户信息
+        CheckSessionUser.checkUser(request, response);
+
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;chartset=utf-8");
         //调用服务

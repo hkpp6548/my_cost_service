@@ -2,6 +2,7 @@ package com.skyhuang.study.program.weightRecord.dao;
 
 import com.skyhuang.domain.WebPager;
 import com.skyhuang.study.jdbc.DataSourceUtils;
+import com.skyhuang.study.program.weightRecord.domain.User;
 import com.skyhuang.study.program.weightRecord.domain.WeightRecord;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -16,10 +17,12 @@ import java.util.List;
  */
 public class WeightRecordDaoImpl implements WeightRecordDao {
 
-    /** 查询所有记录 */
+    /** 查询所有体重记录 */
     private static final String FS_SQL_SELECT = "SELECT * FROM weight_record ";
-
+    /** order by */
     private static final String FS_SQL_ORDERBY = " ORDER BY ";
+    /** 查询所有用户记录 */
+    private static final String FS_SQL_SELECT_USER = "SELECT * FROM user ";
 
     public List<WeightRecord> selectAll(WebPager pager) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
@@ -32,7 +35,7 @@ public class WeightRecordDaoImpl implements WeightRecordDao {
             pager.setCurrentPage(1);
         }
         StringBuffer sql = new StringBuffer(FS_SQL_SELECT);
-        sql.append(FS_SQL_ORDERBY + "date");
+        sql.append(FS_SQL_ORDERBY + "date DESC");
         sql.append(" LIMIT " + (pager.getCurrentPage() - 1) * pager.getPageSize() + "," + pager.getPageSize());
         System.out.println(sql);
         pager.setRowNumber(rowNumber);
@@ -64,9 +67,18 @@ public class WeightRecordDaoImpl implements WeightRecordDao {
                 wr.getBathAfterWeight(), wr.getSleepAgoWeight(), wr.getIsRun(), wr.getId());
     }
 
+
     public int selectTotalNumber() throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
         long number = (Long)queryRunner.query("SELECT COUNT(*) FROM weight_record ", new ScalarHandler());
         return (int)number;
+    }
+
+    public User selectUserByUsernameAndPassword(User user) throws SQLException {
+        QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+        StringBuffer sb = new StringBuffer(FS_SQL_SELECT_USER);
+        sb.append("WHERE username=? AND password=?");
+        User resultUser = qr.query(sb.toString(), new BeanHandler<User>(User.class), user.getUsername(), user.getPassword());
+        return resultUser;
     }
 }
