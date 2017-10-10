@@ -1,3 +1,5 @@
+<%--<%@ taglib prefix="c" uri="/struts-tags" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -9,5 +11,8 @@
 <body>
     <h2>请选择您需要的操作</h2>
     <a href="${pageContext.request.contextPath}/weightRecord/list" >个人体重记录</a>
+
+
+
 </body>
 </html>

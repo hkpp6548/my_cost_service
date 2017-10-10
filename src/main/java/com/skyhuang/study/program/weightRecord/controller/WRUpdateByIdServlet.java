@@ -29,7 +29,6 @@ public class WRUpdateByIdServlet extends HttpServlet {
 		//验证用户信息
 		CheckSessionUser.checkUser(request, response);
 
-		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		WeightRecord wr = new WeightRecord();
 		DateConverter dc = new DateConverter(); // 这是一个日期类型转换器.

@@ -24,7 +24,8 @@ public class WRListServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //验证用户信息
-        CheckSessionUser.checkUser(request, response);
+        //游客可以查看列表
+        //CheckSessionUser.checkUser(request, response);
 
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;chartset=utf-8");

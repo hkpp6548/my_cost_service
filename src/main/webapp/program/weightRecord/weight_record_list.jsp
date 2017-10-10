@@ -18,7 +18,10 @@
 	</c:if>
     <form action="${pageContext.request.contextPath}/weightRecord/list">
         <c:if test="${not empty wr}">
-        <a href="${pageContext.request.contextPath}/program/weightRecord/weight_record_insert.jsp">新增</a>
+
+            <c:if test="${user != null }">
+                <a href="${pageContext.request.contextPath}/program/weightRecord/weight_record_insert.jsp">新增</a>
+            </c:if>
         <table border="0" id="form1table" align="center" width="100%" class="tablestyle">
             <thead>
                 <tr>
@@ -27,9 +30,8 @@
                     <th>记录日期</th>
                     <th>有没有跑步</th>
                     <th>跑步前体重(斤)</th>
-                    <th>跑步后体重(斤)</th>
                     <th>洗澡后体重(斤)</th>
-                    <th>睡觉前体重(斤)</th>
+                    <th>备注</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -44,10 +46,13 @@
                         <c:if test="${c.isRun == 1}">没有</c:if>
                     </td>
                     <td>${c.runAgoWeight}</td>
-                    <td>${c.runAfterWeight }</td>
                     <td>${c.bathAfterWeight }</td>
-                    <td>${c.sleepAgoWeight }</td>
-                    <td><a href="${pageContext.request.contextPath}/weightRecord/selectById?id=${c.id}">编辑</a></td>
+                    <td>${c.remark}</td>
+                    <td>
+                        <c:if test="${user != null }">
+                            <a href="${pageContext.request.contextPath}/weightRecord/selectById?id=${c.id}">编辑</a>
+                        </c:if>
+                    </td>
                         <%--<td>
                             <a href="${pageContext.request.contextPath}/findById?id=${c.id}">编辑</a>
                             &nbsp;&nbsp;&nbsp; <a href="javascript:void(0)"

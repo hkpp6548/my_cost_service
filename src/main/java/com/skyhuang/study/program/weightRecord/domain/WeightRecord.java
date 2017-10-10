@@ -12,14 +12,12 @@ public class WeightRecord {
 	private Date date;
 	/** 跑步前体重（斤） */
 	private double runAgoWeight;
-	/** 跑步后体重（斤） */
-	private double runAfterWeight;
 	/** 洗澡后体重（斤） */
 	private double bathAfterWeight;
-	/** 睡觉前体重（斤） */
-	private double sleepAgoWeight;
 	/** 是否跑步 */
 	private int isRun;
+	/** 备注 */
+	private String remark;
 
 	public int getId() {
 		return id;
@@ -45,14 +43,6 @@ public class WeightRecord {
 		this.runAgoWeight = runAgoWeight;
 	}
 
-	public double getRunAfterWeight() {
-		return runAfterWeight;
-	}
-
-	public void setRunAfterWeight(double runAfterWeight) {
-		this.runAfterWeight = runAfterWeight;
-	}
-
 	public double getBathAfterWeight() {
 		return bathAfterWeight;
 	}
@@ -69,24 +59,11 @@ public class WeightRecord {
 		this.isRun = isRun;
 	}
 
-	public double getSleepAgoWeight() {
-		return sleepAgoWeight;
+	public String getRemark() {
+		return remark;
 	}
 
-	public void setSleepAgoWeight(double sleepAgoWeight) {
-		this.sleepAgoWeight = sleepAgoWeight;
-	}
-
-	@Override
-	public String toString() {
-		return "WeightRecord{" +
-				"id=" + id +
-				", date=" + date +
-				", runAgoWeight=" + runAgoWeight +
-				", runAfterWeight=" + runAfterWeight +
-				", bathAfterWeight=" + bathAfterWeight +
-				", sleepAgoWeight=" + sleepAgoWeight +
-				", isRun=" + isRun +
-				'}';
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }

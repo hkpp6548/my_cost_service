@@ -33,21 +33,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td>跑步后体重（斤）</td>
-				<td>
-					<input type="text" name="runAfterWeight" />
-				</td>
-			</tr>
-			<tr>
 				<td>洗澡后体重（斤）</td>
 				<td>
 					<input type="text" name="bathAfterWeight" />
 				</td>
 			</tr>
 			<tr>
-				<td>洗澡后体重（斤）</td>
+				<td>备注</td>
 				<td>
-					<input type="text" name="sleepAgoWeight" />
+					<input type="text" name="remark" />
 				</td>
 			</tr>
 			<tr>

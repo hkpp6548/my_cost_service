@@ -18,6 +18,7 @@
                 <div style="float: left;width: 70px;">密码:</div><div style="float: left" ><input type="password" name="password"></div><br>
                 <input type="checkbox" name="autoLogin" value="0">自动登录<br>
                 <input type="submit" value="提交">
+                <a href="${pageContext.request.contextPath}/program/weightRecord/index.jsp">访客登录</a>
             </form>
         </div>
     </div>

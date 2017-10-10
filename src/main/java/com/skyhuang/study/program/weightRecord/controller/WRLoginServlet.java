@@ -28,6 +28,7 @@ public class WRLoginServlet extends HttpServlet {
         try {
             //将post信息装换成user实体类
             BeanUtils.populate(user,request.getParameterMap());
+            System.out.println(user.toString());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

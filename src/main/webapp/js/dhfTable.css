@@ -63,6 +63,7 @@ TABLE.tablestyle TBODY TR {
 }
 
 TABLE.tablestyle TBODY TD {
+	text-align: center;
 	VERTICAL-ALIGN: top;
 	PADDING: 4px
 }

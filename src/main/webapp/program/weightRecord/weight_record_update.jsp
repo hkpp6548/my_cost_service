@@ -17,9 +17,8 @@
 				<td>记录日期</td>
 				<td>有没有跑步</td>
 				<td>跑步前体重（斤）</td>
-				<td>跑步后体重（斤）</td>
 				<td>洗澡后体重（斤）</td>
-				<td>睡觉前体重（斤）</td>
+				<td>备注</td>
 				<td>操作</td>
 			</tr>
 			<tr>
@@ -35,9 +34,8 @@
 					</select>
 				</td>
 				<td><input type="text" name="runAgoWeight" value=" ${wr.runAgoWeight}"></td>
-				<td><input type="text" name="runAfterWeight" value=" ${wr.runAfterWeight }"></td>
 				<td><input type="text" name="bathAfterWeight" value=" ${wr.bathAfterWeight }"></td>
-				<td><input type="text" name="sleepAgoWeight" value=" ${wr.sleepAgoWeight }"></td>
+				<td><input type="text" name="remark" value=" ${wr.remark }"></td>
 				<td><input type="submit" value="确认修改"></td>
 			</tr>
 		</table>

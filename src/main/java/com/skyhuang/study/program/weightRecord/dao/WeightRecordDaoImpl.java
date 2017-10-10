@@ -53,18 +53,15 @@ public class WeightRecordDaoImpl implements WeightRecordDao {
 
     public void insert(WeightRecord wr) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String insertSql = "insert into weight_record(id, date, runAgoWeight, runAfterWeight, bathAfterWeight, " +
-                "sleepAgoWeight, isRun) values (null,?,?,?,?,?,?)";
+        String insertSql = "insert into weight_record(id, date, runAgoWeight, bathAfterWeight, isRun, remark) values (null,?,?,?,?,?)";
         queryRunner.update(insertSql, wr.getDate(), wr.getRunAgoWeight(),
-                wr.getRunAfterWeight(), wr.getBathAfterWeight(), wr.getSleepAgoWeight(), wr.getIsRun());
+                 wr.getBathAfterWeight(), wr.getIsRun(),wr.getRemark());
     }
 
     public void updataById(WeightRecord wr) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String updateByIdSql = "update weight_record set date=?,runAgoWeight=?,runAfterWeight=?,bathAfterWeight=?," +
-                "sleepAgoWeight=?,isRun=? where id=?";
-        queryRunner.update(updateByIdSql, wr.getDate(), wr.getRunAgoWeight(), wr.getRunAfterWeight(),
-                wr.getBathAfterWeight(), wr.getSleepAgoWeight(), wr.getIsRun(), wr.getId());
+        String updateByIdSql = "update weight_record set date=?,runAgoWeight=?,bathAfterWeight=?, isRun=?, remark=? where id=?";
+        queryRunner.update(updateByIdSql, wr.getDate(), wr.getRunAgoWeight(), wr.getBathAfterWeight(), wr.getIsRun(),wr.getRemark(), wr.getId());
     }
 
 
