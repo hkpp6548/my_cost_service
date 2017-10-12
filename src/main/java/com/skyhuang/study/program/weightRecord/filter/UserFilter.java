@@ -14,7 +14,7 @@ import java.io.IOException;
 /** 用户登录过滤器
  * Created by hk on 2017/10/7.
  */
-@WebFilter(filterName = "UserFilter",urlPatterns = "/*")
+@WebFilter(filterName = "UserFilter",urlPatterns = "/weightRecord")
 public class UserFilter implements Filter {
     public void destroy() {
     }
@@ -43,7 +43,7 @@ public class UserFilter implements Filter {
                 request.getRequestDispatcher(contextPath + "/index.jsp").forward(request,response);
             }
         }*/
-
+        System.out.println("weightRecord登录过滤");
         chain.doFilter(request, response);
     }
 
