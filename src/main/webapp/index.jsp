@@ -14,9 +14,15 @@
             <h2>欢迎访问凯哥的个人空间，请您先登录！</h2>
             <div class="red">${message}</div>
             <form action="${pageContext.request.contextPath}/wrlogin" method="post">
-                <div style="float: left;width: 70px;">用户名:</div><div style="float: left"><input type="text" name="username"></div><br>
-                <div style="float: left;width: 70px;">密码:</div><div style="float: left" ><input type="password" name="password"></div><br>
-                <input type="checkbox" name="autoLogin" value="0">自动登录<br>
+                <table>
+                    <tr>
+                        <td style="text-align: right">用户名:</td><td><input type="text" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right">密码:</td><td><input type="password" name="password"></td>
+                    </tr>
+                </table>
+                <input type="checkbox" name="autoLogin" value="0">自动登录<br/>
                 <input type="submit" value="提交">
                 <a href="${pageContext.request.contextPath}/program/weightRecord/index.jsp">访客登录</a>
             </form>

@@ -10,7 +10,11 @@
 </head>
 <body>
     <h2>请选择您需要的操作</h2>
-    <a href="${pageContext.request.contextPath}/weightRecord/list" >个人体重记录</a>
+    <a href="${pageContext.request.contextPath}/weightRecord/list" >个人体重记录</a><br/>
+    -----------------------------测试------------------------------------------------<br/>
+    <a href="${pageContext.request.contextPath}/study/fileUpload/fileUpload1.jsp" >上传测试1</a><br/>
+    <a href="${pageContext.request.contextPath}/study/fileUpload/fileUpload2.jsp" >上传测试2</a><br/>
+    <a href="${pageContext.request.contextPath}/study/fileUpload/fileUpload3.jsp" >多文件上传测试</a>
 
 
 
