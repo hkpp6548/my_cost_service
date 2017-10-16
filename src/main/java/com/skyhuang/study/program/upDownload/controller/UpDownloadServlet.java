@@ -30,6 +30,7 @@ public class UpDownloadServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UpDownloadService service = new UpDownloadService();
+        String aaa = request.getParameter("aaa");
         response.setContentType("text/html;charset=utf-8");
         // 1.创建 DiskFileItemFactory
         File file = new File(request.getServletContext().getRealPath("/temp"));// 获取temp目录部署到tomcat后的绝对磁盘路径
@@ -41,8 +42,10 @@ public class UpDownloadServlet extends HttpServlet {
             // 解决上传文件名称中文乱码
             upload.setHeaderEncoding("utf-8");
             try {
+                String fremark = request.getParameter("aaa");
                 List<FileItem> items = upload.parseRequest(request);
                 // 3.得到所有上传项
+                Resources ress = new Resources();
                 for (FileItem item : items) {
                     if (!item.isFormField()) {
                         //获得上传组件name
@@ -68,17 +71,26 @@ public class UpDownloadServlet extends HttpServlet {
                         String savepath = parentPath + randomDirectory;
                         String remarks = fieldName + "remark";
                         String remark = request.getParameter(remarks);
-                        Resources res = new Resources(uuidname, realname, savepath, DateUtils.getNowDate(),remark);
-                        try {
-                            service.insert(res);
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                            //添加记录失败 删除文件
-                        }
+                        //Resources res = new Resources(uuidname, realname, savepath, DateUtils.getNowDate(),remark);
+                        ress.setRealname(realname);
+                        ress.setUuidname(uuidname);
+                        ress.setSavepath(savepath);
+                        ress.setUploadtime(DateUtils.getNowDate());
+
                         // 删除临时文件
                         item.delete();
+                    }else {
+                        String string = item.getString();
+                        ress.setDescription(string);
                     }
                 }
+                try {
+                    service.insert(ress);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    //添加记录失败 删除文件
+                }
+
             } catch (FileUploadException e) {
                 // e.printStackTrace();
                 response.getWriter().write(e.getMessage());

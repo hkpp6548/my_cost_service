@@ -1,11 +1,17 @@
 package com.skyhuang.study.program.upDownload.domain;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.Date;
 
 /** 上传文件类
  * Created by dahoufang the one on 2017/10/16.
  */
 public class Resources {
+
+    public Resources(){
+
+    }
 
     public Resources(String uuidname, String realname, String savepath, Date uploadtime, String description){
         this.uuidname = uuidname;
