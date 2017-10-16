@@ -1,5 +1,10 @@
-package com.skyhuang.study.fileUpload;
+package com.skyhuang.study.program.upDownload.controller;
 
+import com.skyhuang.study.fileUpload.FileUploadUtils;
+import com.skyhuang.study.program.upDownload.domain.Resources;
+import com.skyhuang.study.program.upDownload.service.UpDownloadService;
+import com.skyhuang.utils.DateUtils;
+import com.skyhuang.utils.PropertyUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -14,15 +19,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-/** 上传文件目录分离问题
- * Created by dahoufang the one on 2017/10/14.
+/** 上传控制器
+ * Created by dahoufang the one on 2017/10/16.
  */
-@WebServlet(name = "FileUpload3Servlet", urlPatterns = "/fileUpload3Servlet")
-public class FileUpload3Servlet extends HttpServlet {
+@WebServlet(name = "UpDownloadServlet", urlPatterns = "/uploadServlet")
+public class UpDownloadServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UpDownloadService service = new UpDownloadService();
         response.setContentType("text/html;charset=utf-8");
         // 1.创建 DiskFileItemFactory
         File file = new File(request.getServletContext().getRealPath("/temp"));// 获取temp目录部署到tomcat后的绝对磁盘路径
@@ -33,27 +40,35 @@ public class FileUpload3Servlet extends HttpServlet {
         if (flag) {
             // 解决上传文件名称中文乱码
             upload.setHeaderEncoding("utf-8");
-            // 设置上传文件大小
-            //upload.setSizeMax(1024 * 1024 * 10);// 总大小为10m
             try {
-                List<FileItem> items = upload.parseRequest(request);// 解决request,得到所有的上传项FileItem
+                List<FileItem> items = upload.parseRequest(request);
                 // 3.得到所有上传项
                 for (FileItem item : items) {
                     if (!item.isFormField()) {
                         String name = item.getName(); // 上传文件名称
                         // 得到上传文件真实名称
-                        String filename = FileUploadUtils.getRealName(name);
+                        String realname = FileUploadUtils.getRealName(name);
                         // 得到随机名称
-                        String uuidname = FileUploadUtils.getUUIDFileName(filename);
+                        String uuidname = FileUploadUtils.getUUIDFileName(realname);
                         // 得到随机目录
-                        String randomDirectory = FileUploadUtils.getRandomDirectory(filename);
+                        String randomDirectory = FileUploadUtils.getRandomDirectory(realname);
                         // 注意:随机目录可能不存在，需要创建.
-                        String parentPath = this.getServletContext().getRealPath("/study/fileUpload/file");
+                        //String parentPath = this.getServletContext().getRealPath("/study/fileUpload/file");
+                        String parentPath = PropertyUtils.getPropertyValue("datasrc.properties", "myAlibabaLinuxPath");
+                        //Resources res = new Resources();
                         File rd = new File(parentPath, randomDirectory);
                         if (!rd.exists()) {
                             rd.mkdirs();
                         }
                         IOUtils.copy(item.getInputStream(), new FileOutputStream(new File(rd, uuidname)));
+                        String savepath = parentPath + randomDirectory;
+                        Resources res = new Resources(uuidname, realname, savepath, DateUtils.getNowDate(),"描述");
+                        try {
+                            service.insert(res);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                            //添加记录失败 删除文件
+                        }
                         // 删除临时文件
                         item.delete();
                     }
@@ -67,6 +82,7 @@ public class FileUpload3Servlet extends HttpServlet {
             response.getWriter().write("不是上传操作");
             return;
         }
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

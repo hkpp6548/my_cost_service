@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>测试上传</title>
+    <title>测试基本上传</title>
   </head>
   <body>
 	<form action="${pageContext.request.contextPath}/fileUpload1Servlet" method="post" encType="multipart/form-data">

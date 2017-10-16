@@ -11,6 +11,7 @@
 <body>
     <h2>请选择您需要的操作</h2>
     <a href="${pageContext.request.contextPath}/weightRecord/list" >个人体重记录</a><br/>
+    <a href="../upDownlaod/index.jsp" >简单上传下载服务</a><br/>
     -----------------------------测试------------------------------------------------<br/>
 <c:if test="${user != null }">
     <a href="${pageContext.request.contextPath}/study/fileUpload/fileUpload1.jsp" >上传测试1</a><br/>

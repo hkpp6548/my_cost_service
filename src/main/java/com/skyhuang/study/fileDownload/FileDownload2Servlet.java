@@ -13,14 +13,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-/**测试linux下存放路径  为简单网盘系统做准备
+/** 测试linux下存放路径  为简单网盘系统做准备
  * Created by hk on 2017/10/15.
  */
 @WebServlet(name = "FileDownload2Servlet", urlPatterns = "/fileDownload2Servlet")
 public class FileDownload2Servlet extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1.得到要下载 的文件名称
@@ -28,9 +25,7 @@ public class FileDownload2Servlet extends HttpServlet {
         //filename = new String(filename.getBytes("iso8859-1"), "utf-8");// 解决中文乱码
         //测试linux下存放路径
         File file = new File("/usr/local/skyhuang/account.txt");
-
         //File file = new File("C:\\Users\\hk\\Desktop/account.txt");
-
         System.out.println(file.toString());
         if(file.exists()){// /文件存在，完成下载
             // 下载注意事项1--设置下载文件的mimeType
@@ -66,4 +61,9 @@ public class FileDownload2Servlet extends HttpServlet {
             throw new RuntimeException("文件不存在");
         }
     }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
 }

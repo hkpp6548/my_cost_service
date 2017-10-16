@@ -20,9 +20,6 @@ import java.util.List;
  */
 @WebServlet(name = "FileUpload1Servlet",urlPatterns ="/fileUpload1Servlet" )
 public class FileUpload1Servlet extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1.创建 DiskFileItemFactory
@@ -37,10 +34,8 @@ public class FileUpload1Servlet extends HttpServlet {
                     // 这就是得到了<input type="text" name="content">这样的组件
 //                     String fieldName = item.getFieldName();
 //                     System.out.println(fieldName);
-//
 //                     String name = item.getName();
 //                     System.out.println(name);
-//
 //                     String msg = item.getString();
 //                     System.out.println(msg);
                 }else{//上传的组件 这就是得到了<input type="file"> 这样的组件.
@@ -56,26 +51,27 @@ public class FileUpload1Servlet extends HttpServlet {
                     //获取内容
                     String msg = item.getString();
                     System.out.println(msg);
-
                     // 获取上传文件内容,完成文件 上传操作
                     InputStream is = item.getInputStream();
                     /*byte[] b = new byte[1024];
                     int len = -1;*/
                     String contextPath = request.getSession().getServletContext().getRealPath("/");
-                    FileOutputStream fos = new FileOutputStream(contextPath + "/study/fileUpload/file/"
-                            + name);
-
+                    FileOutputStream fos = new FileOutputStream(contextPath + "/study/fileUpload/file/" + name);
                     /*while((len = is.read(b)) != -1){
                         fos.write(b, 0 ,len);
                     }
                     fos.close();
                     is.close();*/
-
+                    //使用流的复制功能
                     IOUtils.copy(is, fos);
                 }
             }
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }

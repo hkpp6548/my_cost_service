@@ -18,16 +18,11 @@ import java.net.URLEncoder;
  */
 @WebServlet(name = "FileDownload1Servlet", urlPatterns = "/fileDownload1Servlet")
 public class FileDownload1Servlet extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1.得到要下载 的文件名称
         String filename = request.getParameter("filename");
-
         //filename = new String(filename.getBytes("iso8859-1"), "utf-8");// 解决中文乱码
-
         File file = new File(request.getServletContext().getRealPath("/study/fileDownload/file/" + filename));
         if(file.exists()){// /文件存在，完成下载
             // 下载注意事项1--设置下载文件的mimeType
@@ -38,7 +33,6 @@ public class FileDownload1Servlet extends HttpServlet {
             if (agent.contains("MSIE")) {
                 // IE浏览器
                 filename = URLEncoder.encode(filename, "utf-8");
-
             } else if (agent.contains("Firefox")) {
                 // 火狐浏览器
                 BASE64Encoder base64Encoder = new BASE64Encoder();
@@ -65,4 +59,9 @@ public class FileDownload1Servlet extends HttpServlet {
             throw new RuntimeException("文件不存在");
         }
     }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
 }

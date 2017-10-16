@@ -32,16 +32,17 @@ public class FileUploadUtils {
         }
     }
 
+    /**
+     * 获取两层随机目录
+     * @param fileName
+     * @return
+     */
     public static String getRandomDirectory(String fileName){
         // int hashcode = filename.hashCode();
-        //
-        // // System.out.println(hashcode);
-        //
-        // // int类型数据在内存中占32位。转换成16进制数，就得到8个16进制数
+        //  System.out.println(hashcode);
+        // int类型数据在内存中占32位。转换成16进制数，就得到8个16进制数
         // String hex = Integer.toHexString(hashcode);
-        //
-        // // System.out.println(hex); // 056d9363
-        //
+        // System.out.println(hex); // 056d9363
         // return "/" + hex.charAt(0) + "/" + hex.charAt(1);
         int hashcode = fileName.hashCode();
         System.out.println(Integer.toBinaryString(hashcode));

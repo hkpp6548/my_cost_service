@@ -3,12 +3,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>上传中文乱码问题</title>
   </head>
-  
   <body>
-
 	<form action="${pageContext.request.contextPath}/fileUpload2Servlet" method="post" encType="multipart/form-data">
 		<input type="text" name="content"><br>
 		<input type="file" name="f"><br>

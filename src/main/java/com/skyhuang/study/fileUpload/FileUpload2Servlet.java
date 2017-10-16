@@ -5,7 +5,6 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,14 +15,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-/**
+/** 上传是乱码问题 多文件上传
  * Created by dahoufang the one on 2017/10/14.
  */
 @WebServlet(name = "FileUpload2Servlet", urlPatterns = "/fileUpload2Servlet")
 public class FileUpload2Servlet extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
@@ -71,5 +67,10 @@ public class FileUpload2Servlet extends HttpServlet {
             response.getWriter().write("不是上传操作");
             return;
         }
+    }
+
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }
