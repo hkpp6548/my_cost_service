@@ -45,7 +45,10 @@ public class UpDownloadServlet extends HttpServlet {
                 // 3.得到所有上传项
                 for (FileItem item : items) {
                     if (!item.isFormField()) {
-                        String name = item.getName(); // 上传文件名称
+                        //获得上传组件name
+                        String fieldName = item.getFieldName();
+                        // 上传文件名称
+                        String name = item.getName();
                         // 得到上传文件真实名称
                         String realname = FileUploadUtils.getRealName(name);
                         // 得到随机名称
@@ -53,8 +56,9 @@ public class UpDownloadServlet extends HttpServlet {
                         // 得到随机目录
                         String randomDirectory = FileUploadUtils.getRandomDirectory(realname);
                         // 注意:随机目录可能不存在，需要创建.
-                        //String parentPath = this.getServletContext().getRealPath("/study/fileUpload/file");
-                        String parentPath = PropertyUtils.getPropertyValue("datasrc.properties", "myAlibabaLinuxPath");
+                        //String parentPath = this.getServletContext().getRealPath("E:\\upload");
+                        String parentPath = "E:\\upload";
+                        //String parentPath = PropertyUtils.getPropertyValue("datasrc.properties", "myAlibabaLinuxPath");
                         //Resources res = new Resources();
                         File rd = new File(parentPath, randomDirectory);
                         if (!rd.exists()) {
@@ -62,7 +66,9 @@ public class UpDownloadServlet extends HttpServlet {
                         }
                         IOUtils.copy(item.getInputStream(), new FileOutputStream(new File(rd, uuidname)));
                         String savepath = parentPath + randomDirectory;
-                        Resources res = new Resources(uuidname, realname, savepath, DateUtils.getNowDate(),"描述");
+                        String remarks = fieldName + "remark";
+                        String remark = request.getParameter(remarks);
+                        Resources res = new Resources(uuidname, realname, savepath, DateUtils.getNowDate(),remark);
                         try {
                             service.insert(res);
                         } catch (SQLException e) {

@@ -6,9 +6,10 @@
     <title>上传文件</title>
   </head>
   <body>
-    <input type="button" id="add" value="多文件上传" onclick="addFile()">
-	<form action="${pageContext.request.contextPath}/fileUpload3Servlet" method="post" encType="multipart/form-data">
-		<input type="file" name="f"><br>
+    <%--<input type="button" id="add" value="多文件上传" onclick="addFile()">--%>
+	<form action="${pageContext.request.contextPath}/uploadServlet" method="post" encType="multipart/form-data">
+        <input type="file" name="f"><br>
+        上传备注：<textarea name="fremark" cols="10" rows="1"></textarea>
         <div id="content"></div>
 		<input type="submit" value="上传">
 	</form>
