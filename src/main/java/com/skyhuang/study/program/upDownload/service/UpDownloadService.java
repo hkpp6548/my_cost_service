@@ -5,6 +5,7 @@ import com.skyhuang.study.program.upDownload.dao.UpDownloadDaoImple;
 import com.skyhuang.study.program.upDownload.domain.Resources;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by dahoufang the one on 2017/10/16.
@@ -15,4 +16,9 @@ public class UpDownloadService {
     public void insert(Resources resources) throws SQLException {
         upDownloadDao.insert(resources);
     }
+
+    public List<Resources> selectAll() throws SQLException {
+        return upDownloadDao.selectAll();
+    }
+
 }
