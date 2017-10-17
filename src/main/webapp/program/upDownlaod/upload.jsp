@@ -6,12 +6,13 @@
     <title>上传文件</title>
   </head>
   <body>
+    <div class="red">${message}</div>
     <%--<input type="button" id="add" value="多文件上传" onclick="addFile()">--%>
 	<form action="${pageContext.request.contextPath}/uploadServlet" method="post" encType="multipart/form-data">
         <input type="file" name="f"><br>
         上传备注：<textarea name="aaa" id="aaa" cols="10" rows="1"></textarea>
         <div id="content"></div>
-		<input type="submit" value="上传">
+		<input type="submit" value="上传"/>
 	</form>
   </body>
   <script type="text/javascript">
