@@ -22,7 +22,14 @@ public class ShowDownloadServlet extends HttpServlet {
         UpDownloadService service = new UpDownloadService();
         try {
             List<Resources> resources = service.selectAll();
-
+            for(Resources rsc: resources){
+                String savepath = rsc.getSavepath();
+                String uuidname = rsc.getUuidname();
+                savepath = savepath + "/" + uuidname;
+                rsc.setSavepath(savepath);
+            }
+            request.setAttribute("downloads",resources);
+            request.getRequestDispatcher("/program/upDownlaod/download.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }

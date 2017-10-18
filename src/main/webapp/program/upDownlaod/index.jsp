@@ -13,6 +13,7 @@
     <%--上传--%>
     <a href="upload.jsp">上传</a>
     <%--下载--%>
+    <a href="${pageContext.request.contextPath}/showDownloadServlet">下载</a>
     <c:if test="${user != null }">
     </c:if>
 
