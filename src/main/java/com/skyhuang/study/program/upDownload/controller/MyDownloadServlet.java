@@ -23,7 +23,7 @@ public class MyDownloadServlet extends HttpServlet {
         // 1.得到要下载 的文件名称
         String filename = request.getParameter("filename");
         String realname = request.getParameter("realname");
-        //filename = new String(filename.getBytes("iso8859-1"), "utf-8");// 解决中文乱码
+        realname = new String(realname.getBytes("ISO-8859-1"),"utf-8");// 解决中文乱码
         File file = new File(filename);
         if(file.exists()){// /文件存在，完成下载
             // 下载注意事项1--设置下载文件的mimeType
