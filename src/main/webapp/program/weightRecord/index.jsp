@@ -22,8 +22,14 @@
     <a href="${pageContext.request.contextPath}/study/fileDownload/fileDownload2.jsp" >测试服务器端下载</a><br/>
     <a href="${pageContext.request.contextPath}/study/fileDownload/fileDownload3.jsp" >使用递归下载</a><br/>
     <a href="${pageContext.request.contextPath}/study/fileDownload/fileDownload4.jsp" >使用队列下载</a><br/>
-
     <a href="${pageContext.request.contextPath}/fileDownload2Servlet" >测试linux下载</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax1.jsp" >测试AJAX1</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax2.jsp" >测试AJAX2 带参数</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax3.jsp" >测试AJAX3 验证用户名是否可以使用</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax4.jsp" >测试AJAX4 显示商品信息1</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax5.jsp" >测试AJAX5 显示商品信息2</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax6.jsp" >测试AJAX6 xml返回1</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/ajax7.jsp" >测试AJAX7 xml返回2</a><br/>
 </c:if>
 
 </body>

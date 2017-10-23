@@ -25,7 +25,7 @@ public class UserFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
 
         //不登录则为游客模式，只能查看 不能新增编辑等操作。
-       /* //项目路径
+        //项目路径
         String contextPath = request.getContextPath();
         User userSession = (User)request.getSession().getAttribute(StaticStringUtils.USER);
         //判断session中是否有用户信息
@@ -42,7 +42,7 @@ public class UserFilter implements Filter {
                 //没有session和cookie则重新登录
                 request.getRequestDispatcher(contextPath + "/index.jsp").forward(request,response);
             }
-        }*/
+        }
         System.out.println("weightRecord登录过滤");
         chain.doFilter(request, response);
     }
