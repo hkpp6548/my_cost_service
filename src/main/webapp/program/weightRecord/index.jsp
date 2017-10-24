@@ -30,6 +30,7 @@
     <a href="${pageContext.request.contextPath}/study/ajax/ajax5.jsp" >测试AJAX5 显示商品信息2</a><br/>
     <a href="${pageContext.request.contextPath}/study/ajax/ajax6.jsp" >测试AJAX6 xml返回1</a><br/>
     <a href="${pageContext.request.contextPath}/study/ajax/ajax7.jsp" >测试AJAX7 xml返回2</a><br/>
+    <a href="${pageContext.request.contextPath}/study/ajax/provinceAndCity.jsp" >测试AJAX8 省市级联</a><br/>
 </c:if>
 
 </body>

@@ -1,10 +1,10 @@
-package com.skyhuang.study.ajax;
+package com.skyhuang.study.JSON;
 
 import com.skyhuang.domain.Product;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by dahoufang the one on 2017/10/23.
+ * Created by dahoufang the one on 2017/10/24.
  */
 public class JsonLibTest {
     // 将数组转换成json
@@ -20,7 +20,6 @@ public class JsonLibTest {
     public void fun1() {
         String[] st = { "aaa", "bbb", "ccc" };
         String json = JSONArray.fromObject(st).toString();
-
         System.out.println(json); // ["aaa","bbb","ccc"]
     }
 

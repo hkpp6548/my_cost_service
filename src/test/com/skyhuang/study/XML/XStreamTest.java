@@ -1,8 +1,8 @@
-package com.skyhuang.study.ajax;
+package com.skyhuang.study.XML;
 
 import com.skyhuang.domain.Person;
 import com.thoughtworks.xstream.XStream;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dahoufang the one on 2017/10/23.
+ * Created by dahoufang the one on 2017/10/24.
  */
 public class XStreamTest {
     // 将person对象转换成xml
