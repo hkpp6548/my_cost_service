@@ -16,16 +16,49 @@
 			var xmlhttp = getXmlHttpRequest();
 			//2.设置回调函数
 			xmlhttp.onreadystatechange = function() {
-				//5.处理响应数据  当信息全部返回，并且是成功
+				//5.处理响应数据  当信息全部返回，并且是成功;
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					var responseText = eval("(" + xmlhttp.responseText + ")"); ;
-					alert(responseText[0].name);
+					var responseText = eval("(" + xmlhttp.responseText + ")");
+                    jsonobj = responseText;
+					var province = document.getElementById("province");
+					for(var i = 0 ; i < responseText.length; i++){
+                        var element = document.createElement("option");
+                        element.innerHTML = responseText[i].name
+						province.add(element);
+					}
+					//alert();
 				}
 			};
 			//post请求方式，参数设置
 			xmlhttp.open("GET", "${pageContext.request.contextPath}/provinceAndCityServlet");
 			xmlhttp.send(null);
 	};
+
+	function fillCity() {
+
+       /* var obj = document.getElementByIdx_x(”testSelect”); //定位id
+			var index = obj.selectedIndex; // 选中索引
+			var text = obj.options[index].text; // 选中文本
+			var value = obj.options[index].value; // 选中值*/
+        var city = document.getElementById("city");
+        city.options.length=0;
+        var element2 = document.createElement("option");
+        element2.innerHTML =  "--请选择城市--";
+        city.add(element2);
+        var province = document.getElementById("province");
+        var selectedIndex = province.selectedIndex;
+        var text = province.options[selectedIndex].text;
+        for(var i = 0 ; i < jsonobj.length; i++){
+            if(jsonobj[i].name == text){
+				var cityss = jsonobj[i].citys;
+				for ( var j = 0 ; j < cityss.length; j++){
+                    var element = document.createElement("option");
+                    element.innerHTML = cityss[j].name
+                    city.add(element);
+				}
+			}
+        }
+    }
 </script>
 
 </head>
