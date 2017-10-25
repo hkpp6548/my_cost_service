@@ -61,6 +61,11 @@
                     </tr>
                 </table>
                 <input type="checkbox" name="autoLogin" value="0"><%=bundle.getString("automaticlogin") %><br/>
+
+                <input type="checkbox" name="remberAccountAndPassword" value="1">
+
+                <button name="" onclick="test();" value="">测试记住密码</button>
+
                 <input type="submit" value="<%=bundle.getString("submit") %>">
                 <a href="${pageContext.request.contextPath}/program/weightRecord/index.jsp"><%=bundle.getString("visitorstologin") %></a>
             </form>
@@ -102,6 +107,11 @@
 
 </body>
 <script type="text/javascript">
+    
+    function test() {
+
+    }
+    
     function sendForm() {
         document.getElementById("f").submit();
     }
