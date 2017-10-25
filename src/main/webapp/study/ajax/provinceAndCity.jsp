@@ -11,7 +11,6 @@
 <script type="text/javascript">
 	var jsonobj = null;
 	window.onload = function() {
-
 			//第一步:得到XMLHttpRequest对象.
 			var xmlhttp = getXmlHttpRequest();
 			//2.设置回调函数
