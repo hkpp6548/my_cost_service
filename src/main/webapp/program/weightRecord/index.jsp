@@ -31,6 +31,7 @@
     <a href="${pageContext.request.contextPath}/study/ajax/ajax6.jsp" >测试AJAX6 xml返回1</a><br/>
     <a href="${pageContext.request.contextPath}/study/ajax/ajax7.jsp" >测试AJAX7 xml返回2</a><br/>
     <a href="${pageContext.request.contextPath}/study/ajax/provinceAndCity.jsp" >测试AJAX8 省市级联</a><br/>
+    <a href="${pageContext.request.contextPath}/study/designMode/proxy/login1.jsp" >动态代理--编码过滤测试</a><br/>
 </c:if>
 
 </body>
