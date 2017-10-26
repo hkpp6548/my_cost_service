@@ -1,6 +1,6 @@
 package com.skyhuang.study.designMode.proxy;
 
-/**
+/** 代理类王婆
  * Created by dahoufang the one on 2017/10/25.
  */
 public class Wp implements KingWoman{
