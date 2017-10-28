@@ -43,7 +43,7 @@
             <td>验证码:</td>
             <td><input type="text" name="checkcode" id="checkcode"><img
                     src="${pageContext.request.contextPath}/checkImg"
-                    onclick="change();" id="cimg"><span id="checkcode_message"></span>
+                    onclick="changeImage();" id="cimg"><span id="checkcode_message"></span>
             </td>
         </tr>
         <tr>
@@ -56,6 +56,9 @@
 
 </body>
 <script type="text/javascript">
-
+    //更换验证码图片
+    function changeImage() {
+        document.getElementById("cimg").src = "${pageContent.request.contextPath}/checkImg?time=" + new Date().getTime();
+    }
 </script>
 </html>
