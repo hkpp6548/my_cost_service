@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.Map;
 
 /** 注册控制器
  * Created by dahoufang the one on 2017/10/28.
@@ -30,6 +31,15 @@ public class RegistServlet extends HttpServlet {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+
+        //服务器端校验
+        Map<String, String> map = user.validation();
+        if(map.size() != 0){
+            request.setAttribute("map", map);
+            request.getRequestDispatcher("/regist.jsp").forward(request, response);
+            return;
+        }
+
         //设置用户的角色，注册用户全部是user
         user.setRole(StringStaticUtils.USER_ROLE);
         //设置邮件校验码

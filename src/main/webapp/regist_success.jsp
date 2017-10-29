@@ -4,8 +4,8 @@
 <html>
 <head>
 
-<title>My JSP 'regist.jsp' starting page</title>
-<meta http-equiv="refresh" content="3;url=http://www.estore.com">
+<title>注册成功</title>
+<meta http-equiv="refresh" content="3;url=index.jsp">
 <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 
 <script type="text/javascript">
@@ -31,7 +31,7 @@
 
 <body>
 	<h1>
-		注册成功，<span id="time">3</span>秒后跳转到<a href='http://www.estore.com'>首页</a>
+		注册成功，<span id="time">3</span>秒后跳转到<a href='${pageContext.request.contextPath}/index.jsp'>首页</a>
 	</h1>
 </body>
 </html>

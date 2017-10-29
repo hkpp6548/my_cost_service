@@ -1,6 +1,8 @@
 package cn.skyhuang.estore.domain;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 /** 用户实体类
  * Created by dahoufang the one on 2017/10/27.
@@ -86,5 +88,18 @@ public class User {
 
     public void setUpdatetime(Timestamp updatetime) {
         this.updatetime = updatetime;
+    }
+
+    // 校验方法
+    public Map<String, String> validation() {
+        Map<String, String> map = new HashMap<String, String>();
+        if (username == null || username.trim().length() == 0) {
+            map.put("regist.username.error", "用户名不能为空");
+        }
+        if (password == null || password.trim().length() == 0) {
+            map.put("regist.password.error", "密码不能为空");
+        }
+        return map;
+
     }
 }
