@@ -6,6 +6,13 @@ package cn.skyhuang.estore.utils;
 public class StringStaticUtils {
 
     /** 用户角色-user */
-    public static final String USER_ROLE = "user";
+    public static final String USER_ROLE_USER = "user";
+
+    /** 用户激活状态 0:未激活 */
+    public static final int USER_STATE_0 = 0;
+
+    /** 用户激活状态 1:激活 */
+    public static final int USER_STATE_1 = 1;
+
 
 }

@@ -2,16 +2,84 @@ package cn.skyhuang.estore.service;
 
 import cn.skyhuang.estore.dao.UserDao;
 import cn.skyhuang.estore.domain.User;
+import cn.skyhuang.estore.exception.ActiveCodeException;
+import cn.skyhuang.estore.exception.RegistException;
+import cn.skyhuang.estore.utils.SendEmailUtil;
+import cn.skyhuang.estore.utils.StringStaticUtils;
+import cn.skyhuang.estore.utils.UuidUtils;
 
+import javax.mail.MessagingException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
-/**
+/** 用户service
  * Created by dahoufang the one on 2017/10/28.
  */
 public class UserService {
 
-    public void add(User user) throws SQLException {
+    /**
+     * 用户注册
+     * @param user
+     * @throws RegistException
+     */
+    public void regist(User user) throws RegistException {
         UserDao dao = new UserDao();
-        dao.add(user);
+        //注册
+        try {
+            user.setState(StringStaticUtils.USER_STATE_0);
+            //设置用户的角色，注册用户全部是user
+            user.setRole(StringStaticUtils.USER_ROLE_USER);
+            //设置邮件校验码
+            user.setActivecode(UuidUtils.getUuid());
+            //设置注册时间（用于激活码时间判断）
+            user.setUpdatetime(new Timestamp(System.currentTimeMillis()));
+            dao.add(user);
+            //注册成功后发送邮件
+            String emailMsg = "注册成功，请<a href='http://localhost:8080/activeUser?activeCode="
+                    + user.getActivecode()
+                    + "'>激活</a>,激活码为:"
+                    + user.getActivecode();
+            SendEmailUtil.sendMail(user.getEmail(), emailMsg);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RegistException("注册失败！");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    /**
+     *  激活用户
+     * @param activeCode
+     * @throws SQLException
+     */
+    public void activeUser(String activeCode) throws SQLException {
+        UserDao dao = new UserDao();
+        User user = dao.selectUserByActiveCode(activeCode);
+        if(user != null){
+            long time = System.currentTimeMillis() - user.getUpdatetime().getTime();
+
+            if (time <= 24 * 60 * 1000 * 60) {
+                // 激活
+                dao.activeUser(activeCode);
+            } else {
+                throw new ActiveCodeException("激活码过期");
+            }
+        } else {
+            throw new ActiveCodeException("用户不存在");
+        }
+    }
+
+    /**
+     * 根据用户名查找用户
+     * @param user
+     * @return
+     * @throws SQLException
+     */
+    public User selectUserByUsername(User user) throws SQLException {
+        UserDao dao = new UserDao();
+        return dao.selectUserByUsername(user);
     }
 }
