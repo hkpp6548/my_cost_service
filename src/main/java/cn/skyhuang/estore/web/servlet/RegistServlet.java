@@ -29,6 +29,7 @@ public class RegistServlet extends HttpServlet {
         //验证码校验
         String checkcode = request.getParameter("checkcode");
         String checkcode_session = (String)request.getSession().getAttribute("checkcode_session");
+        request.getSession().removeAttribute("checkcode_session");//从session中删除。
         if(!checkcode.equals(checkcode_session)){//checkcode_session session中可能会过时
             request.setAttribute("checkcode_message", "验证码错误！");
             request.getRequestDispatcher(request.getContextPath() + "/regist.jsp").forward(request, response);

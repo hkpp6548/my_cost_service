@@ -3,6 +3,7 @@ package cn.skyhuang.estore.service;
 import cn.skyhuang.estore.dao.UserDao;
 import cn.skyhuang.estore.domain.User;
 import cn.skyhuang.estore.exception.ActiveCodeException;
+import cn.skyhuang.estore.exception.LoginException;
 import cn.skyhuang.estore.exception.RegistException;
 import cn.skyhuang.estore.utils.SendEmailUtil;
 import cn.skyhuang.estore.utils.StringStaticUtils;
@@ -12,13 +13,15 @@ import javax.mail.MessagingException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-/** 用户service
+/**
+ * 用户service
  * Created by dahoufang the one on 2017/10/28.
  */
 public class UserService {
 
     /**
      * 用户注册
+     *
      * @param user
      * @throws RegistException
      */
@@ -51,14 +54,15 @@ public class UserService {
     }
 
     /**
-     *  激活用户
+     * 激活用户
+     *
      * @param activeCode
      * @throws SQLException
      */
     public void activeUser(String activeCode) throws SQLException {
         UserDao dao = new UserDao();
         User user = dao.selectUserByActiveCode(activeCode);
-        if(user != null){
+        if (user != null) {
             long time = System.currentTimeMillis() - user.getUpdatetime().getTime();
 
             if (time <= 24 * 60 * 1000 * 60) {
@@ -74,6 +78,7 @@ public class UserService {
 
     /**
      * 根据用户名查找用户
+     *
      * @param user
      * @return
      * @throws SQLException
@@ -81,5 +86,32 @@ public class UserService {
     public User selectUserByUsername(User user) throws SQLException {
         UserDao dao = new UserDao();
         return dao.selectUserByUsername(user);
+    }
+
+    /**
+     * 登录操作
+     * @param username
+     * @param password
+     * @return
+     * @throws LoginException
+     */
+    public User login(String username, String password) throws LoginException {
+        UserDao dao = new UserDao();
+        try {
+            User user = dao.selectUserByUsernameAndPassword(username, password);
+            if (user != null) {
+                // 判断用户是否激活
+                if (user.getState() == 1) {
+                    return user;
+                } else {
+                    throw new ActiveCodeException("用户未激活");
+                }
+            } else {
+                throw new LoginException("用户名或密码错误");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new LoginException("用户名或密码错误！");
+        }
     }
 }

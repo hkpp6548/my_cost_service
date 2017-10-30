@@ -1,6 +1,6 @@
 package cn.skyhuang.estore.exception;
 
-/**
+/** 激活码自定义异常
  * Created by dahoufang the one on 2017/10/30.
  */
 public class ActiveCodeException extends RuntimeException{

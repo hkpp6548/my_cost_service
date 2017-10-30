@@ -1,6 +1,6 @@
 package cn.skyhuang.estore.exception;
 
-/**
+/** 注册自定义异常
  * Created by dahoufang the one on 2017/10/30.
  */
 public class RegistException extends Exception{

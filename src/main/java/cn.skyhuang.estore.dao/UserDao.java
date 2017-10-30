@@ -37,4 +37,10 @@ public class UserDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanHandler<User>(User.class), user.getUsername());
     }
+
+    public User selectUserByUsernameAndPassword(String username, String password) throws SQLException {
+        String sql = "SELECT * FROM user WHERE username=? and password =?";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return runner.query(sql, new BeanHandler<User>(User.class), username, Md5Utils.md5(password));
+    }
 }

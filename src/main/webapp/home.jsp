@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
 <head>
@@ -43,6 +44,16 @@
             }
             linkUrl+=links[i]+sp;
         }
+
+
+        window.onload=function(){//页面加载成功后跳用这个函数。
+            var username=document.getElementById("username");
+            if("${cookie.remember.value}" != null || "${cookie.remember.value}" != ""){
+                var elementById = document.getElementById("remember");
+                elementById.checked = true;
+            }
+            username.value=window.decodeURIComponent("${cookie.remember.value}","utf-8");
+        };
     </script>
 </head>
 <body>
@@ -89,6 +100,21 @@
                     </li>
                     <li>
                         <a href="#"><span class="l"></span><span class="r"></span><span class="t">关于我们</span></a>
+
+
+                        <c:if test="${not empty user }">
+                    <li>
+                        当前用户:${user.username}
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/logout">注销</a>
+                    </li>
+                    </c:if>
+                    <c:if test="${ empty user }">
+                        <li>
+                            未登录
+                        </li>
+                    </c:if>
                     </li>
                 </ul>
             </div>
@@ -533,18 +559,21 @@
                                     <div class="art-blockcontent-cc"></div>
                                     <div class="art-blockcontent-body">
                                         <!-- block-content -->
-                                        <div><form method="post" id="loginForm" action="login">
+                                        <div><form method="post" id="loginForm" action="/login">
                                             <table>
                                                 <tr>
+                                                    <td colspan="2">${requestScope["login.message"] }</td>
+                                                </tr>
+                                                <tr>
                                                     <td>用户名</td>
-                                                    <td><input type="text" value="" name="username" id="s" /><br/></td>
+                                                    <td><input type="text" value="" name="username" id="username" /><br/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>密  码</td>
-                                                    <td><input type="text" value="" name="password" id="s" /></td>
+                                                    <td><input type="text" value="" name="password" id="password" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2"><input type="checkbox" name="remember" value="on"/>记住用户
+                                                    <td colspan="2"><input type="checkbox" name="remember" id="remember" value="on"/>记住用户
                                                         <input type="checkbox" name="autologin" value="on"/>自动登陆</td>
                                                 </tr>
                                                 <tr>
