@@ -1,5 +1,6 @@
 package cn.skyhuang.estore.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +8,7 @@ import java.util.Map;
 /** 用户实体类
  * Created by dahoufang the one on 2017/10/27.
  */
-public class User {
+public class User implements Serializable{
     private int id; // 用户编号
     private String username; // 用户名
     private String password; // 密码

@@ -14,5 +14,11 @@ public class StringStaticUtils {
     /** 用户激活状态 1:激活 */
     public static final int USER_STATE_1 = 1;
 
+    /** 订单状态 0:未支付 */
+    public static final int ORDER_PAYSTATE_0 = 0;
+
+    /** 订单状态 1:已支付 */
+    public static final int ORDER_PAYSTATE_1 = 1;
+
 
 }

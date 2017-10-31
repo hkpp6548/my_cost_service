@@ -48,12 +48,19 @@
 
         window.onload=function(){//页面加载成功后跳用这个函数。
             var username=document.getElementById("username");
-            if("${cookie.remember.value}" != null || "${cookie.remember.value}" != ""){
-                var elementById = document.getElementById("remember");
+            var elementById = document.getElementById("remember");
+            if("${cookie.remember.value}" == null || "${cookie.remember.value}" == ""){
+                elementById.checked = false;
+            }else {
                 elementById.checked = true;
             }
             username.value=window.decodeURIComponent("${cookie.remember.value}","utf-8");
         };
+
+        //查看商品详细信息
+        function findProductById(id) {
+            location.href="http://localhost:8080/findProductById?id="+id;
+        }
     </script>
 </head>
 <body>
@@ -107,7 +114,7 @@
                         当前用户:${user.username}
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/logout">注销</a>
+                        <a href="${pageContext.request.contextPath}/loginOut">注销</a>
                     </li>
                     </c:if>
                     <c:if test="${ empty user }">
@@ -168,8 +175,7 @@
                                         </h2>
                                     </div>
                                     <div class="art-postcontent">
-                                        <!-- article-content -->
-                                        <p>
+                                        <!-- article-content -->                                        <p>
                                                 	<span class="art-button-wrapper">
                                                 		<span class="l"> </span>
                                                 		<span class="r"> </span>
@@ -179,305 +185,24 @@
                                         <div class="cleared"></div>
                                         <div class="art-content-layout overview-table">
                                             <div class="art-content-layout-row">
+                                                <c:forEach items="${ps}" var="p" varStatus="vs">
                                                 <div class="art-layout-cell">
                                                     <div class="overview-table-inner">
-                                                        <h4>保温水杯</h4>
-                                                        <img src="images/pic1.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
+                                                        <h4>${p.name }</h4>
+                                                        <img src="${pageContext.request.contextPath}${p.imgurl}" width="55px" height="55px"
+                                                             alt="an image" class="image" onclick="findProductById('${p.id}')"/>
+                                                        <p>价格: ￥${p.price }</p>
+                                                        <p><a href="${pageContext.request.contextPath}/findProductById?id=${p.id}">速速抢购</a></p>
                                                     </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>黑宝石手链</h4>
-                                                        <img src="images/pic2.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>LV名牌包包</h4>
-                                                        <img src="images/pic3.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>名牌夹克</h4>
-                                                        <img src="images/pic4.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>大容量冰箱</h4>
-                                                        <img src="images/pic5.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>可爱的挂链</h4>
-                                                        <img src="images/pic6.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                            </div><!-- end row -->
+                                                </div>
+                                                <c:if test="${vs.count%5==0}">
+                                            </div> <!-- 判断当前已经有5个商品了，这 一行结束，在重新开启一行 -->
                                             <div class="art-content-layout-row">
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>保温水杯</h4>
-                                                        <img src="images/pic1.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>黑宝石手链</h4>
-                                                        <img src="images/pic2.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>LV名牌包包</h4>
-                                                        <img src="images/pic3.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>名牌夹克</h4>
-                                                        <img src="images/pic4.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>大容量冰箱</h4>
-                                                        <img src="images/pic5.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>可爱的挂链</h4>
-                                                        <img src="images/pic6.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                            </div><!-- end row -->
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>保温水杯</h4>
-                                                        <img src="images/pic1.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>黑宝石手链</h4>
-                                                        <img src="images/pic2.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>LV名牌包包</h4>
-                                                        <img src="images/pic3.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>名牌夹克</h4>
-                                                        <img src="images/pic4.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>大容量冰箱</h4>
-                                                        <img src="images/pic5.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>可爱的挂链</h4>
-                                                        <img src="images/pic6.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                            </div><!-- end row -->
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>保温水杯</h4>
-                                                        <img src="images/pic1.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>黑宝石手链</h4>
-                                                        <img src="images/pic2.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>LV名牌包包</h4>
-                                                        <img src="images/pic3.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>名牌夹克</h4>
-                                                        <img src="images/pic4.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>大容量冰箱</h4>
-                                                        <img src="images/pic5.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>可爱的挂链</h4>
-                                                        <img src="images/pic6.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                            </div><!-- end row -->
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>保温水杯</h4>
-                                                        <img src="images/pic1.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>黑宝石手链</h4>
-                                                        <img src="images/pic2.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>LV名牌包包</h4>
-                                                        <img src="images/pic3.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>名牌夹克</h4>
-                                                        <img src="images/pic4.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>大容量冰箱</h4>
-                                                        <img src="images/pic5.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>可爱的挂链</h4>
-                                                        <img src="images/pic6.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                            </div><!-- end row -->
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>保温水杯</h4>
-                                                        <img src="images/pic1.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>黑宝石手链</h4>
-                                                        <img src="images/pic2.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>LV名牌包包</h4>
-                                                        <img src="images/pic3.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>名牌夹克</h4>
-                                                        <img src="images/pic4.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>大容量冰箱</h4>
-                                                        <img src="images/pic5.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                                <div class="art-layout-cell">
-                                                    <div class="overview-table-inner">
-                                                        <h4>可爱的挂链</h4>
-                                                        <img src="images/pic6.jpg" width="55px" height="55px" alt="an image" class="image" />
-                                                        <p>价格: ￥139</p>
-                                                        <p>速速抢购</p>
-                                                    </div>
-                                                </div><!-- end cell -->
-                                            </div><!-- end row -->
+                                                </c:if>
+                                                </c:forEach>
+                                                <!-- end cell -->
+                                            </div>
+                                            <!-- end row -->
                                         </div><!-- end table -->
 
                                         <!-- /article-content -->
@@ -514,16 +239,16 @@
                                                 <a href="page.html?i1"><span class="l"></span><span class="r"></span><span class="t">主页</span></a>
                                             </li>
                                             <li>
-                                                <a href="page.html?i2"><span class="l"></span><span class="r"></span><span class="t">添加商品</span></a>
+                                                <a href="${pageContext.request.contextPath}/addProduct.jsp"><span class="l"></span><span class="r"></span><span class="t">添加商品</span></a>
                                             </li>
                                             <li>
                                                 <a href="page.html?i4"><span class="l"></span><span class="r"></span><span class="t">查看商品</span></a>
                                             </li>
                                             <li>
-                                                <a href="page.html?i5"><span class="l"></span><span class="r"></span><span class="t">查看购物车</span></a>
+                                                <a href="${pageContext.request.contextPath}/showCart.jsp"><span class="l"></span><span class="r"></span><span class="t">查看购物车</span></a>
                                             </li>
                                             <li>
-                                                <a href="page.html?i6"><span class="l"></span><span class="r"></span><span class="t">查看订单</span></a>
+                                                <a href="${pageContext.request.contextPath}/showOrder"><span class="l"></span><span class="r"></span><span class="t">查看订单</span></a>
                                             </li>
                                             <li>
                                                 <a href="page.html?i7"><span class="l"></span><span class="r"></span><span class="t">关于我们</span></a>
