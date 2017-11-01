@@ -61,4 +61,25 @@ public class ProductDao {
         }
         runner.batch(DataSourceUtils.getConnectionByTransaction(), sql, params);
     }
+
+    public void changePnum(List<OrderItem> items) throws SQLException {
+        String sql  = "update products set pnum = pnum+? where id=?";
+        QueryRunner runner = new QueryRunner();
+        Object [][] params = new Object[items.size()][2];
+        for (int i = 0; i < items.size(); i++) {
+            OrderItem orderItem = items.get(i);
+            params[i][0] = orderItem.getBuynum();
+            params[i][1] = orderItem.getProduct_id();
+        }
+        runner.batch(DataSourceUtils.getConnectionByTransaction(), sql, params);
+    }
+
+    public List<Product> downloadSell() throws SQLException {
+        String sql = "SELECT products.name, SUM(buynum) totalSaleNum " +
+                " FROM products, orderitem, orders " +
+                " WHERE orderitem.product_id=products.id AND orders.id=orderitem.order_id AND" +
+                " orders.paystate=0 ORDER BY totalSaleNum";
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        return runner.query(sql, new BeanListHandler<Product>(Product.class));
+    }
 }

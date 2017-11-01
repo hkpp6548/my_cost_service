@@ -17,41 +17,30 @@
 			div.style.display = "block";
 			//1.得到XMLHttpRequest对象
 			var xmlhttp = getXmlHttpRequest();
-
 			//2.注册回调函数
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
 					//5.得到返回的json数据
-					var jsonobj = eval("(" + xmlhttp.responseText + ")");
-
+					var jsonobj = eval("(" + xmlhttp.responseText + ")")
 					var table = "<table border='1' align='center'><tr><td>商品名称</td><td>商品价格</td><td>商品描述</td></tr>";
-
 					for ( var i = 0; i < jsonobj.length; i++) {
-
 						table += "<tr><td>" + jsonobj[i].name + "</td><td>"
 								+ jsonobj[i].price + "</td><td>"
 								+ jsonobj[i].description + "</td></tr>"
 					}
 					table += "</table>";
-
 					div.innerHTML = table;
 				}
 				;
 			};
-
 			//3.open
-			xmlhttp.open("GET",
-					"${pageContext.request.contextPath}/findProductByOrder?id="
-							+ orderid);
+			xmlhttp.open("GET", "${pageContext.request.contextPath}/findProductByOrder?id=" + orderid);
 			//4 send
 			xmlhttp.send(null);
-
 			btn.value = "关闭";
 		} else {
 			btn.value = "查看订单中商品";
 			//document.getElementById("div_" + orderid).innerHTML="";
-
 			div.style.display = "none";
 		}
 	};

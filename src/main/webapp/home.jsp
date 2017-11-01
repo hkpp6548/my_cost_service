@@ -245,6 +245,9 @@
                                                 <a href="page.html?i4"><span class="l"></span><span class="r"></span><span class="t">查看商品</span></a>
                                             </li>
                                             <li>
+                                                <a href="${pageContext.request.contextPath}/download"><span class="l"></span><span class="r"></span><span class="t">下载销售榜单</span></a>
+                                            </li>
+                                            <li>
                                                 <a href="${pageContext.request.contextPath}/showCart.jsp"><span class="l"></span><span class="r"></span><span class="t">查看购物车</span></a>
                                             </li>
                                             <li>

@@ -32,4 +32,10 @@ public class OrderDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         return runner.query(sql, new BeanListHandler<Order>(Order.class));
     }
+
+    public void delOrderById(String id) throws SQLException {
+        String sql = "delete  from orders where id=?";
+        QueryRunner runner = new QueryRunner();
+        runner.update(DataSourceUtils.getConnectionByTransaction(), sql, id);
+    }
 }

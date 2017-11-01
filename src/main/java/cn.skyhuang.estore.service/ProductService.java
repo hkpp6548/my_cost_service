@@ -24,4 +24,8 @@ public class ProductService {
     public Product findById(String id) throws SQLException {
         return new ProductDao().findById(id);
     }
+
+    public List<Product> downloadSell() throws SQLException {
+        return new ProductDao().downloadSell();
+    }
 }

@@ -13,6 +13,16 @@ public class Product {
     private String imgurl; // 图片路径
     private String description; // 描述
 
+    private int totalSaleNum; // 总销售数量
+
+    public int getTotalSaleNum() {
+        return totalSaleNum;
+    }
+
+    public void setTotalSaleNum(int totalSaleNum) {
+        this.totalSaleNum = totalSaleNum;
+    }
+
     public String getId() {
         return id;
     }
@@ -67,6 +77,12 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImgurl_s() { // a.jpg
+        int index = imgurl.lastIndexOf(".");
+
+        return imgurl.substring(0, index) + "_s" + imgurl.substring(index);
     }
 
     @Override
