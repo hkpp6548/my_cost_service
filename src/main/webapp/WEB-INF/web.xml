@@ -17,6 +17,11 @@
   </error-page>
 
   <error-page>
+    <exception-type>cn.skyhuang.estore.exception.PrivilegeException</exception-type>
+    <location>/error/privilege.jsp</location>
+  </error-page>
+
+  <error-page>
     <error-code>500</error-code>
     <location>/error/500.jsp</location>
   </error-page>
