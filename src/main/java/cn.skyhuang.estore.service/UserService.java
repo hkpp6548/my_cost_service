@@ -20,8 +20,7 @@ import java.sql.Timestamp;
 public class UserService {
 
     /**
-     * 用户注册
-     *
+     * 用户注册服务
      * @param user
      * @throws RegistException
      */
@@ -37,14 +36,14 @@ public class UserService {
             //设置注册时间（用于激活码时间判断）
             user.setUpdatetime(new Timestamp(System.currentTimeMillis()));
             dao.add(user);
-            //注册成功后发送邮件
+            //邮件内容
             String emailMsg = "注册成功，请<a href='http://localhost:8080/activeUser?activeCode="
-                    + user.getActivecode()
-                    + "'>激活</a>,激活码为:"
-                    + user.getActivecode();
+                    + user.getActivecode() + "'>激活</a>,激活码为:" + user.getActivecode();
+            //发送邮件
             SendEmailUtil.sendMail(user.getEmail(), emailMsg);
         } catch (SQLException e) {
             e.printStackTrace();
+            //抛出自定义注册异常
             throw new RegistException("注册失败！");
         } catch (MessagingException e) {
             e.printStackTrace();
