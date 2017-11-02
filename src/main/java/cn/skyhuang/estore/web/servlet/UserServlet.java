@@ -4,7 +4,6 @@ import cn.skyhuang.estore.domain.User;
 import cn.skyhuang.estore.exception.RegistException;
 import cn.skyhuang.estore.service.UserService;
 import cn.skyhuang.estore.utils.StringStaticUtils;
-import cn.skyhuang.estore.utils.UuidUtils;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
@@ -19,14 +18,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 注册控制器
- * Created by dahoufang the one on 2017/10/28.
+ * Created by dahoufang the one on 2017/11/2.
  */
-@WebServlet(name = "RegistServlet", urlPatterns = "/regist")
-public class RegistServlet extends HttpServlet {
+@WebServlet(name = "UserServlet", urlPatterns = "/user")
+public class UserServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       /* //验证码校验
+        String method = request.getParameter(StringStaticUtils.PARAM_METHOD);
+        if("regist".equals(method)){
+
+        }
+
+    }
+
+    /**
+     * 用户注册
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void userRegist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //验证码校验
         String checkcode = request.getParameter("checkcode");
         String checkcode_session = (String)request.getSession().getAttribute("checkcode_session");
         request.getSession().removeAttribute("checkcode_session");//从session中删除。
@@ -34,7 +47,6 @@ public class RegistServlet extends HttpServlet {
             request.setAttribute("checkcode_message", "验证码错误！");
             request.getRequestDispatcher(request.getContextPath() + "/regist.jsp").forward(request, response);
         }
-
         User user = new User();
         try {
             BeanUtils.populate(user, request.getParameterMap());
@@ -70,10 +82,12 @@ public class RegistServlet extends HttpServlet {
             request.getRequestDispatcher(request.getContextPath() + "/regist.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
+
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
 }

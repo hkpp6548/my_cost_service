@@ -20,5 +20,8 @@ public class StringStaticUtils {
     /** 订单状态 1:已支付 */
     public static final int ORDER_PAYSTATE_1 = 1;
 
+    /** servlet请求参数:method */
+    public static final String PARAM_METHOD = "method";
+
 
 }
