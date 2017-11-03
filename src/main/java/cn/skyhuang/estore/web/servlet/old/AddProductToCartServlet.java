@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 import cn.skyhuang.estore.service.ProductService;

@@ -31,7 +31,7 @@ td {
 			alert("最大购物数量" + pnum);
 			count = pnum;
 		}
-		location.href = "${pageContext.request.contextPath}/changeCount?id=" + id + "&count=" + count;
+		location.href = "${pageContext.request.contextPath}/cart?method=changeNum&id=" + id + "&count=" + count;
 	};
 
 	//不是数字将不进行更改。
@@ -64,7 +64,7 @@ td {
 		var flag = window.confirm("要删除商品码?");
 		if (flag) {
 			//要删除
-			location.href = "${pageContext.request.contextPath}/removeProductFromCart?id=" + id;
+			location.href = "${pageContext.request.contextPath}/cart?method=remove&id=" + id;
 		}
 	}
 
@@ -85,11 +85,8 @@ td {
 
 	function selectCk(main) {
 		var flag = main.checked;
-
 		var delCks = document.getElementsByName("delCk");
-
 		for ( var i = 0; i < delCks.length; i++) {
-
 			delCks[i].checked = flag;
 		}
 	}
@@ -104,7 +101,7 @@ td {
 		}
 		if(param!=""){
 			param=param.substring(0,param.length-1);
-			location.href="${pageContext.request.contextPath}/removeSelectProductFromCart?"+param;
+			location.href="${pageContext.request.contextPath}/cart?method=removeSelect&"+param;
 		}
 	};
 	//生成订单
@@ -148,7 +145,7 @@ td {
 						<input type="button" value="+" onclick="changeCount('${c.key.id}','${c.value+1}','${c.key.pnum}')">
 						&nbsp;&nbsp;可购买数量:${c.key.pnum}</td>
 					<td>
-						<a href="${pageContext.request.contextPath}/removeProductFromCart?id=${c.key.id}"
+						<a href="${pageContext.request.contextPath}/cart?method=remove&id=${c.key.id}"
 						onclick="deleteProduct(event)">删除</a>
 						<a href="javascript:void(0)" onclick="removeProduct('${c.key.id}')">删除</a>
 					</td>

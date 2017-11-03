@@ -37,7 +37,7 @@ public class AddProductServlert extends HttpServlet {
         // 1.设置临时文件存储位置以及缓存大小
         DiskFileItemFactory factory = new DiskFileItemFactory();
         factory.setSizeThreshold(1024 * 100);
-        factory.setRepository(new File(this.getServletContext().getRealPath("/temp")));
+        //factory.setRepository(new File(this.getServletContext().getRealPath("/temp")));
         // 2.得到ServletFileUpload
         ServletFileUpload upload = new ServletFileUpload(factory);
         upload.setHeaderEncoding("utf-8"); // 解决上传文件中文乱码.

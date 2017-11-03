@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 <script type="text/javascript">
 	function addProductToCart(id){
-		location.href="${pageContext.request.contextPath}/addProductToCart?id="+id;
+		location.href="${pageContext.request.contextPath}/cart?method=add&id="+id;
 	}
 </script>
 </head>

@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 
@@ -17,7 +17,7 @@ import java.util.Map;
 public class RemoveProductFromCartServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 得到要删除的商品的id
+       /* // 得到要删除的商品的id
         String id = request.getParameter("id");
         // 得到购物车，从购物车中将商品删除,
         Map<Product, Integer> cart = (Map<Product, Integer>) request.getSession().getAttribute("cart");
@@ -28,7 +28,7 @@ public class RemoveProductFromCartServlet extends HttpServlet {
         if (cart.size() == 0) {
             request.getSession().removeAttribute("cart");
         }
-        response.sendRedirect(request.getContextPath() + "/showCart.jsp");
+        response.sendRedirect(request.getContextPath() + "/showCart.jsp");*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

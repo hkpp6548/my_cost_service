@@ -1,12 +1,9 @@
 package cn.skyhuang.estore.utils;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
-
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -50,13 +47,14 @@ public class PicUtils {
      * @throws IOException
      */
     public void resize(int w, int h) throws IOException {
-        BufferedImage _image = new BufferedImage(w, h,
-                BufferedImage.TYPE_INT_RGB);
+        BufferedImage _image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
         _image.getGraphics().drawImage(img, 0, 0, w, h, null); // 绘制缩小后的图
-        FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流
+        /*FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流
         JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-        encoder.encode(_image); // 近JPEG编码
-        out.close();
+        encoder.encode(_image); // 近JPEG编码*/
+        String formatName = destFile.substring(destFile.lastIndexOf(".") + 1);
+        ImageIO.write(_image, /*"GIF"*/ formatName /* format desired */ , new File(destFile) /* target */ );
+        //out.close();
     }
 
     /**

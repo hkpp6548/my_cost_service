@@ -45,9 +45,9 @@ public class ProductDao {
      * @throws SQLException
      */
     public Product findById(String id) throws SQLException {
-        String sql = "select * from products";
+        String sql = "select * from products where id=?";
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        return runner.query(sql, new BeanHandler<Product>(Product.class));
+        return runner.query(sql, new BeanHandler<Product>(Product.class), id);
     }
 
     public void updatePnum(List<OrderItem> items) throws SQLException {

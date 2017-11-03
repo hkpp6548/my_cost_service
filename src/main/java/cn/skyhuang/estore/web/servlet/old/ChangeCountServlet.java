@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 
@@ -17,7 +17,7 @@ import java.util.Map;
 public class ChangeCountServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1.得到请求参数
+        /*// 1.得到请求参数
         String id = request.getParameter("id");
         int count = Integer.parseInt(request.getParameter("count"));
         // 2.修改购物车中指定商品的数量.
@@ -37,7 +37,7 @@ public class ChangeCountServlet extends HttpServlet {
 //（3）找到table上面的元素
 //（4）遍历链表，如果没有就put进去，有就更新（更新值）
         }
-        response.sendRedirect(request.getContextPath() + "/showCart.jsp");
+        response.sendRedirect(request.getContextPath() + "/showCart.jsp");*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

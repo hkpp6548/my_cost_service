@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 
@@ -17,14 +17,14 @@ import java.util.Map;
 public class RemoveSelectProductFromCartServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] id = request.getParameterValues("id");
+        /*String[] id = request.getParameterValues("id");
         Map<Product, Integer> cart = (Map<Product, Integer>) request.getSession().getAttribute("cart");
         for (int i = 0; i < id.length; i++) {
             Product p = new Product();
             p.setId(id[i]);
             cart.remove(p);
         }
-        response.sendRedirect(request.getContextPath() + "/showCart.jsp");
+        response.sendRedirect(request.getContextPath() + "/showCart.jsp");*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
