@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.exception.ActiveCodeException;
 import cn.skyhuang.estore.service.UserService;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class ActiveUserServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String activeCode = request.getParameter("activeCode");
+        /*String activeCode = request.getParameter("activeCode");
         UserService service = new UserService();
         //激活用户
         try {
@@ -27,7 +27,7 @@ public class ActiveUserServlet extends HttpServlet {
             return;
         } catch (SQLException e) {
             throw new ActiveCodeException();
-        }
+        }*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

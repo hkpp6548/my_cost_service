@@ -17,7 +17,7 @@
 --%>
     <br>
 </center>
-<form id="f" action="${pageContext.request.contextPath}/regist" method="post" onsubmit="return checkForm();">
+<form id="f" action="${pageContext.request.contextPath}/user?method=regist" method="post" onsubmit="return checkForm();">
     <table align="center">
         <caption>注册页面</caption>
         <tr>
@@ -51,7 +51,7 @@
             <td>验证码:</td>
             <td><input type="text" name="checkcode" id="checkcode"><img
                     src="${pageContext.request.contextPath}/checkImg"
-                    onclick="changeImage();" id="cimg"><span id="checkcode_message" style="color: red;"></span>
+                    onclick="changeImage();" id="cimg"><span id="checkcode_message" style="color: red;">${checkcode_message}</span>
             </td>
         </tr>
         <tr>

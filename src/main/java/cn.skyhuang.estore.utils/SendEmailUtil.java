@@ -12,14 +12,15 @@ import java.util.Properties;
  */
 public class SendEmailUtil {
 
-
-
-    //发送邮件
-    public static void sendMail(String email, String emailMsg)
-            throws AddressException, MessagingException {
-
+    /**
+     * 发送邮件
+     * @param emailAddress  邮箱地址
+     * @param emailMsg  邮件内容
+     * @throws AddressException
+     * @throws MessagingException
+     */
+    public static void sendMail(String emailAddress, String emailMsg) throws AddressException, MessagingException {
         // 1.创建一个程序与邮件服务器会话对象 Session
-
         Properties props = new Properties();
         props.setProperty("mail.transport.protocol", "SMTP");
         props.setProperty("mail.host", "smtp.163.com");
@@ -31,23 +32,16 @@ public class SendEmailUtil {
                 return new PasswordAuthentication("15216100570", "1qaz2WSX");
             }
         };
-
         Session session = Session.getInstance(props, auth);
 
         // 2.创建一个Message，它相当于是邮件内容
         Message message = new MimeMessage(session);
-
         message.setFrom(new InternetAddress("15216100570@163.com")); // 设置发送者
-
-        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(email)); // 设置发送方式与接收者
-
+        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(emailAddress)); // 设置发送方式与接收者
         message.setSubject("用户激活");
         // message.setText("这是一封激活邮件，请<a href='#'>点击</a>");
-
         message.setContent(emailMsg, "text/html;charset=utf-8");
-
         // 3.创建 Transport用于将邮件发送
-
         Transport.send(message);
     }
 

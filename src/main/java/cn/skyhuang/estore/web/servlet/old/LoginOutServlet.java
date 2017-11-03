@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +15,14 @@ import java.io.IOException;
 public class LoginOutServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 注销功能就是销毁session
+       /* // 注销功能就是销毁session
         request.getSession().invalidate();
-
         // 将自动登录的cookie删除。
         Cookie cookie = new Cookie("autologin", "");
         cookie.setMaxAge(0);
         cookie.setPath("/");
         response.addCookie(cookie);
-
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        response.sendRedirect(request.getContextPath() + "/index.jsp");*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

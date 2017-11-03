@@ -114,7 +114,7 @@
                         当前用户:${user.username}
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/loginOut">注销</a>
+                        <a href="${pageContext.request.contextPath}/user?method=loginOut">注销</a>
                     </li>
                     </c:if>
                     <c:if test="${ empty user }">
@@ -287,7 +287,7 @@
                                     <div class="art-blockcontent-cc"></div>
                                     <div class="art-blockcontent-body">
                                         <!-- block-content -->
-                                        <div><form method="post" id="loginForm" action="/login">
+                                        <div><form method="post" id="loginForm" action="/user?method=login">
                                             <table>
                                                 <tr>
                                                     <td colspan="2">${requestScope["login.message"] }</td>

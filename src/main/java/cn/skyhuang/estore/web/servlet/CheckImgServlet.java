@@ -1,5 +1,7 @@
 package cn.skyhuang.estore.web.servlet;
 
+import cn.skyhuang.estore.utils.StringStaticUtils;
+
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -99,7 +101,7 @@ public class CheckImgServlet extends HttpServlet {
         }
 
         // 将验证码内容保存session
-        request.getSession().setAttribute("checkcode_session", word);
+        request.getSession().setAttribute(StringStaticUtils.SESSION_CHECKCODE, word);
 
         //  System.out.println(word);
 

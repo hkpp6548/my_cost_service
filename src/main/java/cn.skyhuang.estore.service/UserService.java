@@ -37,7 +37,7 @@ public class UserService {
             user.setUpdatetime(new Timestamp(System.currentTimeMillis()));
             dao.add(user);
             //邮件内容
-            String emailMsg = "注册成功，请<a href='http://localhost:8080/activeUser?activeCode="
+            String emailMsg = "注册成功，请<a href='http://localhost:8080/user?method=active&activeCode="
                     + user.getActivecode() + "'>激活</a>,激活码为:" + user.getActivecode();
             //发送邮件
             SendEmailUtil.sendMail(user.getEmail(), emailMsg);
@@ -48,13 +48,10 @@ public class UserService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-
-
     }
 
     /**
      * 激活用户
-     *
      * @param activeCode
      * @throws SQLException
      */
@@ -63,7 +60,7 @@ public class UserService {
         User user = dao.selectUserByActiveCode(activeCode);
         if (user != null) {
             long time = System.currentTimeMillis() - user.getUpdatetime().getTime();
-
+            //时间不能超过一天
             if (time <= 24 * 60 * 1000 * 60) {
                 // 激活
                 dao.activeUser(activeCode);
@@ -88,7 +85,7 @@ public class UserService {
     }
 
     /**
-     * 登录操作
+     *  用户登录验证操作
      * @param username
      * @param password
      * @return

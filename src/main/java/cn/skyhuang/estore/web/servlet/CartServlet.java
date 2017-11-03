@@ -2,6 +2,7 @@ package cn.skyhuang.estore.web.servlet;
 
 import cn.skyhuang.estore.domain.Product;
 import cn.skyhuang.estore.service.ProductService;
+import cn.skyhuang.estore.utils.StringStaticUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +15,25 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** 添加商品到购物车
- * Created by dahoufang the one on 2017/10/31.
+/** 购物车控制器
+ * Created by dahoufang the one on 2017/11/3.
  */
-@WebServlet(name = "AddProductToCartServlet", urlPatterns = "/addProductToCart")
-public class AddProductToCartServlet extends HttpServlet {
+@WebServlet(name = "CartServlet", urlPatterns = "/cart")
+public class CartServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       /* // 1.得到商品id
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String method = request.getParameter(StringStaticUtils.PARAM_METHOD);
+            if ("add".equals(method)) {
+                addProductToCart(request, response);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addProductToCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 1.得到商品id
         String id = request.getParameter("id");
         // 2.根据id查询商品
         ProductService service = new ProductService();
@@ -49,15 +61,16 @@ public class AddProductToCartServlet extends HttpServlet {
             cart.put(p, count);
             // 将购物车存储到session中.
             session.setAttribute("cart", cart);
-            response.getWriter().write("添加商品到购物车成功，<a href='http://localhost:8080'>继续购物</a>,<a href='http://localhost:8080/showCart.jsp'>查看购物车</a>");
+            response.getWriter().write("添加商品到购物车成功，<a href='" + StringStaticUtils.HOME_PATH + "'>继续购物</a>," +
+                    "<a href='" + StringStaticUtils.HOME_PATH + "/showCart.jsp'>查看购物车</a>");
             return;
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
 }

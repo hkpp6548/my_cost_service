@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.User;
 import cn.skyhuang.estore.exception.LoginException;
@@ -22,7 +22,7 @@ import java.sql.SQLException;
 public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1.得到请求参数
+        /*// 1.得到请求参数
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserService service = new UserService();
@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/home.jsp")
                     .forward(request, response);
             return;
-        }
+        }*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

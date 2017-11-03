@@ -23,5 +23,26 @@ public class StringStaticUtils {
     /** servlet请求参数:method */
     public static final String PARAM_METHOD = "method";
 
+    /** jsp页面：注册页面 */
+    public static final String JSP_REGIST = "regist.jsp";
+
+    /** session:  session_checkcode */
+    public static final String SESSION_CHECKCODE = "session_checkcode";
+
+    /** cookie: 是否记住用户名  remember */
+    public static final String COOKIE_REMEMBER = "remember";
+
+    /** cookie: 是否自动登录  autologin */
+    public static final String COOKIE_AUTOLOGIN = "autologin";
+
+    /** cookie的有效时间： 10天 */
+    public static final int COOKIE_MAXDAY_10 = 10 * 24 * 60 * 60;
+
+    /** cookie的有效时间： 0天 */
+    public static final int COOKIE_MAXDAY_0 = 0;
+
+    /** 项目地址路径 */
+    public static final String HOME_PATH = "http://localhost:8080";
+
 
 }
