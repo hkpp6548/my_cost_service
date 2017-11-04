@@ -28,19 +28,19 @@ import java.util.Map;
  * Created by dahoufang the one on 2017/11/2.
  */
 @WebServlet(name = "UserServlet", urlPatterns = "/user")
-public class UserServlet extends HttpServlet {
+public class UserServlet extends BaseServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
             String method = request.getParameter(StringStaticUtils.PARAM_METHOD);
             if("regist".equals(method)){        //注册
-                userRegist(request, response);
+                regist(request, response);
             } else if ("login".equals(method)){ //登录
-                userLogin(request, response);
+                login(request, response);
             } else if ("loginOut".equals(method)){  //注销
-                userLoginOut(request, response);
+                loginOut(request, response);
             } else if ("active".equals(method)){    //激活
-                userActive(request, response);
+                active(request, response);
             }
         } catch (ServletException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class UserServlet extends HttpServlet {
      * @param response
      * @throws IOException
      */
-    private void userActive(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void active(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String activeCode = request.getParameter("activeCode");
         UserService service = new UserService();
         //激活用户
@@ -74,7 +74,7 @@ public class UserServlet extends HttpServlet {
      * @param response
      * @throws IOException
      */
-    public void userLoginOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void loginOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 注销功能就是销毁session
         request.getSession().invalidate();
         // 将自动登录的cookie删除。
@@ -90,7 +90,7 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void userRegist(HttpServletRequest request, HttpServletResponse response)
+    public void regist(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //验证码校验
         String checkcode = request.getParameter("checkcode");
@@ -150,7 +150,7 @@ public class UserServlet extends HttpServlet {
      * @throws IOException
      * @throws ServletException
      */
-    private void userLogin(HttpServletRequest request, HttpServletResponse response)
+    public void login(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         // 1.得到请求参数
         String username = request.getParameter("username");

@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Order;
 import cn.skyhuang.estore.domain.User;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ShowOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1.得到当前用户
+       /* // 1.得到当前用户
         User user = (User) request.getSession().getAttribute("user");
 
         // 2.调用OrderService完成查询订单操作
@@ -32,7 +32,7 @@ public class ShowOrderServlet extends HttpServlet {
             return;
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

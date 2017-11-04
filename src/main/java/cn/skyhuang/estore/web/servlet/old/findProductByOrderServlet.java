@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 import cn.skyhuang.estore.service.OrderItemService;
@@ -21,7 +21,7 @@ import java.util.List;
 public class findProductByOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1.得到要查询的订单的id
+        /*// 1.得到要查询的订单的id
         String orderid = request.getParameter("id");
 
         // 2.调用service,得到List<Product>
@@ -41,7 +41,7 @@ public class findProductByOrderServlet extends HttpServlet {
             response.getWriter().close();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 import cn.skyhuang.estore.service.ProductService;
@@ -19,7 +19,7 @@ import java.util.List;
 public class FindAllProductServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1.查询所有商品
+       /* // 1.查询所有商品
         ProductService service = new ProductService();
         try {
             List<Product> ps = service.findAll();
@@ -29,7 +29,7 @@ public class FindAllProductServlet extends HttpServlet {
             return;
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

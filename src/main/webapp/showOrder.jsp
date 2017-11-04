@@ -34,7 +34,7 @@
 				;
 			};
 			//3.open
-			xmlhttp.open("GET", "${pageContext.request.contextPath}/findProductByOrder?id=" + orderid);
+			xmlhttp.open("GET", "${pageContext.request.contextPath}/order?method=findProductByOrderId&id=" + orderid);
 			//4 send
 			xmlhttp.send(null);
 			btn.value = "关闭";
@@ -83,7 +83,7 @@
 				</td>
 				<td>
 				<c:if test="${order.paystate==0}">
-				<a href="${pageContext.request.contextPath}/delOrder?orderid=${order.id}">删除</a>
+				<a href="${pageContext.request.contextPath}/order?method=delete&orderid=${order.id}">删除</a>
 				</c:if>
 				<c:if test="${order.paystate!=0}">
 				删除

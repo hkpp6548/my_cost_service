@@ -59,7 +59,7 @@
 
         //查看商品详细信息
         function findProductById(id) {
-            location.href="http://localhost:8080/findProductById?id="+id;
+            location.href="http://localhost:8080/product?method=findById&id="+id;
         }
     </script>
 </head>
@@ -192,7 +192,7 @@
                                                         <img src="${pageContext.request.contextPath}${p.imgurl}" width="55px" height="55px"
                                                              alt="an image" class="image" onclick="findProductById('${p.id}')"/>
                                                         <p>价格: ￥${p.price }</p>
-                                                        <p><a href="${pageContext.request.contextPath}/findProductById?id=${p.id}">速速抢购</a></p>
+                                                        <p><a href="${pageContext.request.contextPath}/product?method=findById&id=${p.id}">速速抢购</a></p>
                                                     </div>
                                                 </div>
                                                 <c:if test="${vs.count%5==0}">
@@ -251,7 +251,7 @@
                                                 <a href="${pageContext.request.contextPath}/showCart.jsp"><span class="l"></span><span class="r"></span><span class="t">查看购物车</span></a>
                                             </li>
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/showOrder"><span class="l"></span><span class="r"></span><span class="t">查看订单</span></a>
+                                                <a href="${pageContext.request.contextPath}/order?method=showOrder"><span class="l"></span><span class="r"></span><span class="t">查看订单</span></a>
                                             </li>
                                             <li>
                                                 <a href="page.html?i7"><span class="l"></span><span class="r"></span><span class="t">关于我们</span></a>

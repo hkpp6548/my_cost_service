@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Product;
 import cn.skyhuang.estore.service.ProductService;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class FindProductByIdServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1.得到商品id
+        /*// 1.得到商品id
         String id = request.getParameter("id");
         // 2.调用service,dao完成查询商品操作
         ProductService service = new ProductService();
@@ -35,7 +35,7 @@ public class FindProductByIdServlet extends HttpServlet {
             return;
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

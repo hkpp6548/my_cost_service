@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old;
 
 import cn.skyhuang.estore.domain.Order;
 import cn.skyhuang.estore.domain.OrderItem;
@@ -28,7 +28,7 @@ import java.util.Map;
 public class AddOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Order order=new Order();
+        /*Order order=new Order();
         try {
             BeanUtils.populate(order, request.getParameterMap());
         } catch (IllegalAccessException e) {
@@ -64,7 +64,7 @@ public class AddOrderServlet extends HttpServlet {
         OrderService service=new OrderService();
         service.addOrder(order);
         request.getSession().removeAttribute("cart");//生成订单后，将购物车中商品删除。
-        response.getWriter().write("订单生成成功，<a href='"+request.getContextPath()+"/showOrder'>查看订单</a>");
+        response.getWriter().write("订单生成成功，<a href='"+request.getContextPath()+"/showOrder'>查看订单</a>");*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

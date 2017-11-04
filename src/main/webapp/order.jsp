@@ -16,7 +16,7 @@
 	<br>
 	<br>
 	<div align="center">
-		<form action="${pageContext.request.contextPath}/addOrder" method="post">
+		<form action="${pageContext.request.contextPath}/order?method=add" method="post">
 			送货地址:<input type="text" name="receiverinfo"><br>
 			<c:set value="0" var="money"></c:set>
 

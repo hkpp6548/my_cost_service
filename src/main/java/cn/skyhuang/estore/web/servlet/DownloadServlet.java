@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-/**
+/** 下载榜单操作
  * Created by dahoufang the one on 2017/11/1.
  */
 @WebServlet(name = "DownloadServlet", urlPatterns = "/download")
