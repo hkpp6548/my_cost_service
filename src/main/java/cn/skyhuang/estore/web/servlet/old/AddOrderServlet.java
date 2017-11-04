@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/** 生成订单项
+/** 生成订单项      (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "AddOrderServlet", urlPatterns = "/addOrder")
+@WebServlet(name = "AddOrderServlet", urlPatterns = "/old/addOrder")
 public class AddOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

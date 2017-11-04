@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/** 激活控制器
+/** 激活控制器   (未重构)
  * Created by dahoufang the one on 2017/10/30.
  */
-@WebServlet(name = "ActiveUserServlet",urlPatterns = "/activeUser")
+@WebServlet(name = "ActiveUserServlet",urlPatterns = "/old/activeUser")
 public class ActiveUserServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

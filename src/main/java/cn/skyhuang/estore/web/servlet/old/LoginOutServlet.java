@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/** 注销
+/** 注销  (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "LoginOutServlet", urlPatterns = "/loginOut")
+@WebServlet(name = "LoginOutServlet", urlPatterns = "/old/loginOut")
 public class LoginOutServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

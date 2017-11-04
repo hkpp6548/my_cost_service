@@ -15,10 +15,10 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
 
-/** 登录
+/** 登录  (未重构)
  * Created by dahoufang the one on 2017/10/30.
  */
-@WebServlet(name = "LoginServlet",urlPatterns = "/login")
+@WebServlet(name = "LoginServlet",urlPatterns = "/old/login")
 public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

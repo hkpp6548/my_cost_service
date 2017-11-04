@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/** 通过商品id查找商品
+/** 通过商品id查找商品  (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "FindProductByIdServlet", urlPatterns = "/findProductById")
+@WebServlet(name = "FindProductByIdServlet", urlPatterns = "/old/findProductById")
 public class FindProductByIdServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

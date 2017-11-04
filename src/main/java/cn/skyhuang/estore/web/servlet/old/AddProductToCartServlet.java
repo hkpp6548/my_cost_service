@@ -14,10 +14,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** 添加商品到购物车
+/** 添加商品到购物车    (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "AddProductToCartServlet", urlPatterns = "/addProductToCart")
+@WebServlet(name = "AddProductToCartServlet", urlPatterns = "/old/addProductToCart")
 public class AddProductToCartServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,4 +1,4 @@
-package cn.skyhuang.estore.web.servlet;
+package cn.skyhuang.estore.web.servlet.old2;
 
 import cn.skyhuang.estore.domain.User;
 import cn.skyhuang.estore.exception.ActiveCodeException;
@@ -27,15 +27,34 @@ import java.util.Map;
 /** 用户相关控制器（注册，登录，注销，激活）
  * Created by dahoufang the one on 2017/11/2.
  */
-@WebServlet(name = "UserServlet", urlPatterns = "/user")
-public class UserServlet extends BaseServlet {
+/*@WebServlet(name = "OldUserServlet", urlPatterns = "old2/user")
+public class OldUserServlet extends HttpServlet {
 
-    /**
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String method = request.getParameter(StringStaticUtils.PARAM_METHOD);
+            if("regist".equals(method)){        //注册
+                regist(request, response);
+            } else if ("login".equals(method)){ //登录
+                login(request, response);
+            } else if ("loginOut".equals(method)){  //注销
+                loginOut(request, response);
+            } else if ("active".equals(method)){    //激活
+                active(request, response);
+            }
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    *//**
      *  用户激活
      * @param request
      * @param response
      * @throws IOException
-     */
+     *//*
     public void active(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String activeCode = request.getParameter("activeCode");
         UserService service = new UserService();
@@ -49,12 +68,12 @@ public class UserServlet extends BaseServlet {
         }
     }
 
-    /**
+    *//**
      *  用户注销
      * @param request
      * @param response
      * @throws IOException
-     */
+     *//*
     public void loginOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 注销功能就是销毁session
         request.getSession().invalidate();
@@ -64,13 +83,13 @@ public class UserServlet extends BaseServlet {
         RequestSendUtiles.requestRedirect("index.jsp", request, response);
     }
 
-    /**
+    *//**
      * 用户注册
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     */
+     *//*
     public void regist(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //验证码校验
@@ -124,13 +143,13 @@ public class UserServlet extends BaseServlet {
         }
     }
 
-    /**
+    *//**
      *  用户登录
      * @param request
      * @param response
      * @throws IOException
      * @throws ServletException
-     */
+     *//*
     public void login(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         // 1.得到请求参数
@@ -171,4 +190,11 @@ public class UserServlet extends BaseServlet {
             return;
         }
     }
-}
+
+
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+}*/

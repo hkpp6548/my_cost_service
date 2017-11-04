@@ -12,10 +12,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-/** 查找所有商品
+/** 查找所有商品  (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "FindAllProductServlet", urlPatterns = "/findAllProduct")
+@WebServlet(name = "FindAllProductServlet", urlPatterns = "/old/findAllProduct")
 public class FindAllProductServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-/** 查看订单
+/** 查看订单    (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "ShowOrderServlet", urlPatterns = "/showOrder")
+@WebServlet(name = "ShowOrderServlet", urlPatterns = "/old/showOrder")
 public class ShowOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

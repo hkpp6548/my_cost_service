@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/** 删除订单
+/** 删除订单    (未重构)
  * Created by dahoufang the one on 2017/11/1.
  */
-@WebServlet(name = "DelOrderServlet", urlPatterns = "/delOrder")
+@WebServlet(name = "DelOrderServlet", urlPatterns = "/old/delOrder")
 public class DelOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

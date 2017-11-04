@@ -14,10 +14,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
+/** (未重构)
  * Created by dahoufang the one on 2017/11/1.
  */
-@WebServlet(name = "findProductByOrderServlet", urlPatterns = "/findProductByOrder")
+@WebServlet(name = "findProductByOrderServlet", urlPatterns = "/old/findProductByOrder")
 public class findProductByOrderServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

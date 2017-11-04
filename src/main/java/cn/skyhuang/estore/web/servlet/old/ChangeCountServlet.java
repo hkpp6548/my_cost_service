@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-/** 改变购物车中的商品数量
+/** 改变购物车中的商品数量     (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "ChangeCountServlet", urlPatterns = "/changeCount")
+@WebServlet(name = "ChangeCountServlet", urlPatterns = "/old/changeCount")
 public class ChangeCountServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

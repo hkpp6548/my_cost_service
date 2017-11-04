@@ -19,10 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 注册控制器
+ * 注册控制器    (未重构)
  * Created by dahoufang the one on 2017/10/28.
  */
-@WebServlet(name = "RegistServlet", urlPatterns = "/regist")
+@WebServlet(name = "RegistServlet", urlPatterns = "/old/regist")
 public class RegistServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-/** 从购物车中删除选中的商品
+/** 从购物车中删除选中的商品    (未重构)
  * Created by dahoufang the one on 2017/10/31.
  */
-@WebServlet(name = "RemoveSelectProductFromCartServlet", urlPatterns = "/removeSelectProductFromCart")
+@WebServlet(name = "RemoveSelectProductFromCartServlet", urlPatterns = "/old/removeSelectProductFromCart")
 public class RemoveSelectProductFromCartServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
