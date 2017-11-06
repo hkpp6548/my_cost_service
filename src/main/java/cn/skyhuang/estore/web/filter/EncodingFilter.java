@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-/** 编码过滤器
+/** 编码过滤器（使用装饰设计模式）
  * Created by hk on 2017/10/29.
  */
 @WebFilter(filterName = "EncodingFilter",urlPatterns = "/*")
@@ -68,9 +68,7 @@ class MyRequest extends HttpServletRequestWrapper {
                         for (int i = 0; i < values.length; i++) {
                             try {
                                 // 处理get乱码
-                                values[i] = new String(
-                                        values[i].getBytes("ISO-8859-1"),
-                                        "utf-8");
+                                values[i] = new String(values[i].getBytes("ISO-8859-1"), "utf-8");
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }

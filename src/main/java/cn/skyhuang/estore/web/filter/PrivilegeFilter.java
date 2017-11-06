@@ -18,6 +18,7 @@ import java.util.Properties;
 /** 权限过滤器
  * Created by hk on 2017/11/1.
  */
+
 @WebFilter(filterName = "PrivilegeFilter", urlPatterns = "/*")
 public class PrivilegeFilter implements Filter {
 

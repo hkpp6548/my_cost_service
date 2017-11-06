@@ -1,15 +1,11 @@
 package cn.skyhuang.estore.web.servlet.old;
 
-import cn.skyhuang.estore.exception.ActiveCodeException;
-import cn.skyhuang.estore.service.UserService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /** 激活控制器   (未重构)
  * Created by dahoufang the one on 2017/10/30.

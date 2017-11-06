@@ -27,6 +27,9 @@ public class BaseServlet extends HttpServlet {
                 4.请求红method=login，这个login要和方法名一致。
            */
             String methodName = req.getParameter("method");
+            if(null == methodName){
+                methodName = req.getQueryString().split("method=")[1];
+            }
             Method method = this.getClass().getMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
             method.invoke(this, req,resp);
         } catch (Exception e) {

@@ -2,7 +2,7 @@ package cn.skyhuang.estore.web.filter;
 
 import cn.skyhuang.estore.domain.User;
 import cn.skyhuang.estore.exception.LoginException;
-import cn.skyhuang.estore.service.UserService;
+import cn.skyhuang.estore.service.OldUserService;
 import cn.skyhuang.estore.utils.CookieUtils;
 import cn.skyhuang.estore.utils.StringStaticUtils;
 
@@ -41,7 +41,7 @@ public class AutoLoginFilter implements Filter {
                     // 有cookie，进行登录操作.
                     String username = URLDecoder.decode(cookie.getValue().split("::")[0], "utf-8");
                     String password = cookie.getValue().split("::")[1];
-                    UserService service = new UserService();
+                    OldUserService service = new OldUserService();
                     try {
                         User userTwo = service.login(username, password);
                         if (userTwo != null) {

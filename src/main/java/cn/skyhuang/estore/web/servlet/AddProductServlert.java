@@ -1,7 +1,10 @@
 package cn.skyhuang.estore.web.servlet;
 
 import cn.skyhuang.estore.domain.Product;
+import cn.skyhuang.estore.domain.User;
+import cn.skyhuang.estore.service.OldProductService;
 import cn.skyhuang.estore.service.ProductService;
+import cn.skyhuang.estore.service.ProductServiceFactory;
 import cn.skyhuang.estore.utils.PicUtils;
 import cn.skyhuang.estore.utils.UploadUtils;
 import org.apache.commons.beanutils.BeanUtils;
@@ -33,6 +36,8 @@ import java.util.UUID;
 public class AddProductServlert extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User)request.getSession().getAttribute("user");
+        ProductService service = ProductServiceFactory.getInstance();
         Map<String, String[]> map = new HashMap<String, String[]>();// 用于封装所有请求参数
         // 1.设置临时文件存储位置以及缓存大小
         DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -82,8 +87,8 @@ public class AddProductServlert extends HttpServlet {
                 Product p = new Product();
                 BeanUtils.populate(p, map);
                 // 调用service完成添加操作
-                ProductService service = new ProductService();
-                service.addProduct(p);
+                //OldProductService service = new OldProductService();
+                service.addProduct(user, p);
                 // 得定向到首页
                 response.sendRedirect("http://localhost:8080");
                 return;

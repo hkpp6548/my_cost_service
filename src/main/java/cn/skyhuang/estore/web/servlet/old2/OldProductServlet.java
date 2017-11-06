@@ -1,24 +1,11 @@
-package cn.skyhuang.estore.web.servlet;
-
-import cn.skyhuang.estore.domain.Product;
-import cn.skyhuang.estore.service.ProductService;
-import cn.skyhuang.estore.utils.RequestSendUtiles;
-import cn.skyhuang.estore.utils.StringStaticUtils;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
+package cn.skyhuang.estore.web.servlet.old2;
 
 /** 商品控制器（id查找, 查找所有）；
  * Created by dahoufang the one on 2017/11/4.
  */
-@WebServlet(name = "ProductServlet", urlPatterns = "/product")
-public class ProductServlet extends HttpServlet {
+/*
+@WebServlet(name = "OldProductServlet", urlPatterns = "old/product")
+public class OldProductServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
@@ -43,13 +30,15 @@ public class ProductServlet extends HttpServlet {
 
     }
 
-    /**
+    */
+/**
      *  查找所有商品
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     */
+     *//*
+
     public void findAllProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1.查询所有商品
         ProductService service = new ProductService();
@@ -64,14 +53,16 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    /**
+    */
+/**
      * 根据商品id查找商品
      *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     */
+     *//*
+
     public void findProductById(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // 1.得到商品id
@@ -100,3 +91,4 @@ public class ProductServlet extends HttpServlet {
         doGet(request, response);
     }
 }
+*/

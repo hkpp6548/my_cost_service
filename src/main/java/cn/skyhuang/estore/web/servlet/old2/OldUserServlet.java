@@ -1,29 +1,5 @@
 package cn.skyhuang.estore.web.servlet.old2;
 
-import cn.skyhuang.estore.domain.User;
-import cn.skyhuang.estore.exception.ActiveCodeException;
-import cn.skyhuang.estore.exception.LoginException;
-import cn.skyhuang.estore.exception.RegistException;
-import cn.skyhuang.estore.service.UserService;
-import cn.skyhuang.estore.utils.CookieUtils;
-import cn.skyhuang.estore.utils.RequestSendUtiles;
-import cn.skyhuang.estore.utils.StringStaticUtils;
-import org.apache.commons.beanutils.BeanUtils;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URLEncoder;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-
 /** 用户相关控制器（注册，登录，注销，激活）
  * Created by dahoufang the one on 2017/11/2.
  */

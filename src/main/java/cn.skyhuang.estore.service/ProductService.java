@@ -1,31 +1,30 @@
 package cn.skyhuang.estore.service;
 
-import cn.skyhuang.estore.dao.ProductDao;
+import cn.skyhuang.estore.annotation.PrivilegeInfo;
 import cn.skyhuang.estore.domain.Product;
+import cn.skyhuang.estore.domain.User;
 
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by dahoufang the one on 2017/10/31.
+ * Created by dahoufang the one on 2017/11/6.
  */
-public class ProductService {
+public interface ProductService {
 
     //添加商品
-    public void addProduct(Product p) throws SQLException{
-        ProductDao dao = new ProductDao();
-        dao.add(p);
-    }
-    //查找所有商品
-    public List<Product> findAll() throws SQLException {
-        return new ProductDao().findAll();
-    }
-    //通过商品id查找商品
-    public Product findById(String id) throws SQLException {
-        return new ProductDao().findById(id);
-    }
+    @PrivilegeInfo("addProduct")
+    public void addProduct(User user, Product p) throws SQLException;
 
-    public List<Product> downloadSell() throws SQLException {
-        return new ProductDao().downloadSell();
-    }
+    //查找所有商品
+    //@PrivilegeInfo("findAll")
+    public List<Product> findAll(User user) throws SQLException;
+
+    //通过商品id查找商品
+    @PrivilegeInfo("findById")
+    public Product findById(User user, String id) throws SQLException;
+
+    //下载榜单
+    @PrivilegeInfo("downloadSell")
+    public List<Product> downloadSell(User user) throws SQLException;
 }

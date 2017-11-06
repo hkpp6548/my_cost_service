@@ -11,7 +11,6 @@ import cn.skyhuang.estore.utils.UuidUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
 import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,23 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 /** 订单控制器
- * Created by dahoufang the one on 2017/11/4.
+ * Created by dahoufang the one on 2017/11/6.
  */
-@WebServlet(name = "OrderServlet", urlPatterns = "/order")
-public class OrderServlet extends HttpServlet {
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String method = request.getParameter(StringStaticUtils.PARAM_METHOD);
-        if("add".equals(method)){           //生成订单
-            addOrder(request, response);
-        } else if("showOrder".equals(method)){  //查看订单
-            showOrder(request, response);
-        } else if("findProductByOrderId".equals(method)){   //查找订单中的所有商品
-            findProductByOrderId(request, response);
-        } else if("delete".equals(method)){            //删除订单
-            delete(request, response);
-        }
-    }
+@WebServlet(name = "OrerServlet", urlPatterns = "/order")
+public class OrerServlet extends BaseServlet {
 
     /**
      *  根据订单id删除订单
@@ -118,7 +104,7 @@ public class OrderServlet extends HttpServlet {
      * @param response
      * @throws IOException
      */
-    public void addOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Order order=new Order();
         try {
             BeanUtils.populate(order, request.getParameterMap());
@@ -158,7 +144,4 @@ public class OrderServlet extends HttpServlet {
         response.getWriter().write("订单生成成功，<a href='"+request.getContextPath()+"/order?method=showOrder'>查看订单</a>");
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
 }

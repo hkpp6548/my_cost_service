@@ -1,7 +1,10 @@
 package cn.skyhuang.estore.web.servlet;
 
 import cn.skyhuang.estore.domain.Product;
+import cn.skyhuang.estore.domain.User;
+import cn.skyhuang.estore.service.OldProductService;
 import cn.skyhuang.estore.service.ProductService;
+import cn.skyhuang.estore.service.ProductServiceFactory;
 import cn.skyhuang.estore.utils.DownloadUtils;
 
 import javax.servlet.ServletException;
@@ -23,11 +26,13 @@ public class DownloadServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 完成下载榜单操作
+        User user = (User)request.getSession().getAttribute("user");
+        ProductService service = ProductServiceFactory.getInstance();
 
         // 1.得到数据.
-        ProductService service = new ProductService();
+        //OldProductService service = new OldProductService();
         try {
-            List<Product> ps = service.downloadSell();
+            List<Product> ps = service.downloadSell(user);
 
             // 2.设置下载两个条件
             String filename = "销售榜单" + new Date().toLocaleString() + ".csv";

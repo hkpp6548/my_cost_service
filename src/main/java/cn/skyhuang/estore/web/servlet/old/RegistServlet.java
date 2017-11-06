@@ -1,22 +1,11 @@
 package cn.skyhuang.estore.web.servlet.old;
 
-import cn.skyhuang.estore.domain.User;
-import cn.skyhuang.estore.exception.RegistException;
-import cn.skyhuang.estore.service.UserService;
-import cn.skyhuang.estore.utils.StringStaticUtils;
-import cn.skyhuang.estore.utils.UuidUtils;
-import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 注册控制器    (未重构)

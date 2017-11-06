@@ -4,7 +4,7 @@ import cn.skyhuang.estore.domain.User;
 import cn.skyhuang.estore.exception.ActiveCodeException;
 import cn.skyhuang.estore.exception.LoginException;
 import cn.skyhuang.estore.exception.RegistException;
-import cn.skyhuang.estore.service.UserService;
+import cn.skyhuang.estore.service.OldUserService;
 import cn.skyhuang.estore.utils.CookieUtils;
 import cn.skyhuang.estore.utils.RequestSendUtiles;
 import cn.skyhuang.estore.utils.StringStaticUtils;
@@ -13,11 +13,9 @@ import org.apache.commons.beanutils.BeanUtils;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
@@ -38,7 +36,7 @@ public class UserServlet extends BaseServlet {
      */
     public void active(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String activeCode = request.getParameter("activeCode");
-        UserService service = new UserService();
+        OldUserService service = new OldUserService();
         //激活用户
         try {
             service.activeUser(activeCode);
@@ -99,7 +97,7 @@ public class UserServlet extends BaseServlet {
             RequestSendUtiles.requestRedirect(StringStaticUtils.JSP_REGIST, request, response);
             return;
         }
-        UserService service = new UserService();
+        OldUserService service = new OldUserService();
         try {
             //检验用户名是否存在（可用ajax校验）
             User isExitsUser = service.selectUserByUsername(user);
@@ -136,7 +134,7 @@ public class UserServlet extends BaseServlet {
         // 1.得到请求参数
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        UserService service = new UserService();
+        OldUserService service = new OldUserService();
         try {
             //  验证用户，用户不正确将抛出异常
             User user = service.login(username, password);
