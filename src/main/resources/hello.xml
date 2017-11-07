@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="hello" class="com.skyhuang.struts2.study.web.controller.HelloAction" method="say">
+            <result name="good">/hello.jsp</result>
+        </action>
+        <action name="hello2" class="com.skyhuang.struts2.study.web.controller.Hello2Action" >
+            <result name="success">/demo1_success.jsp</result>
+        </action>
+        <action name="hello3" class="com.skyhuang.struts2.study.web.controller.Hello3Action">
+            <result name="success">/demo1_success.jsp</result>
+        </action>
+    </package>
+
+</struts>

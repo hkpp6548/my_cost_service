@@ -5,10 +5,14 @@
 
 <struts>
 
-    <package name="default" namespace="/" extends="struts-default">
-        <action name="hello" class="com.skyhuang.struts2.study.web.controller.HelloAction" method="say">
-            <result name="good">/hello.jsp</result>
-        </action>
-    </package>
+    <!--配置这个之后，只能访问 http://localhost:8080/hello.abc -->
+    <!--<constant name="struts.action.extension" value="abc,,"></constant>-->
+    <!--提供详细报错页面，修改struts.xml后不需要重启服务器 （要求）-->
+    <constant name="struts.devMode" value="true" />
+
+    <!--目的:就是为了阅读方便。可以让一个模块一个配置文件，在struts.xml文件中通过,导入其它的配置文件。-->
+    <include file="hello.xml"></include>
+    <include file="book.xml"></include>
+    <include file="product.xml"></include>  <!--通配符配置-->
 
 </struts>
