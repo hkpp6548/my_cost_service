@@ -1,1 +1,2 @@
-小商城项目
+# my_cost_service
+struts2的学习

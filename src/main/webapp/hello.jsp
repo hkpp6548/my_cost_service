@@ -5,10 +5,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>struts2学习首页</title>
+    <title></title>
 </head>
 <body>
-    <a href="${pageContext.request.contextPath}/hello">struts2学习</a>
+    <h1>再次学习struts2</h1>
 </body>
 <script type="text/javascript">
 
