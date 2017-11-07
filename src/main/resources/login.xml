@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="login" namespace="/" extends="struts-default">
+		<!--通过设置method的值，来确定访问action类中的哪一个方法.-->
+		<!--<action name="book_add" class="com.skyhuang.struts2.study.web.controller.BookAction" method="add"></action>
+		<action name="book_update" class="com.skyhuang.struts2.study.web.controller.BookAction" method="update"></action>
+		<action name="book_delete" class="com.skyhuang.struts2.study.web.controller.BookAction" method="delete"></action>
+		<action name="book_search" class="com.skyhuang.struts2.study.web.controller.BookAction" method="search"></action>-->
+		<action name="login" class="com.skyhuang.struts2.study.web.controller.LoginAction" method="login">
+			<result name="login" type="dispatcher">/login.jsp</result>
+			<result name="success" type="redirect">/demo1_success.jsp</result>
+		</action>
+		<!-- <action name="*_*" class="cn.itcast.action.{1}Action" method="{2}"></action>-->
+		 <!--<action name="book" class="cn.itcast.action.BookAction"></action>-->
+	</package>
+
+</struts>

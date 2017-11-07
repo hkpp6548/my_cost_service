@@ -10,7 +10,8 @@
 <body>
     <a href="${pageContext.request.contextPath}/hello">struts2学习</a>
     <a href="${pageContext.request.contextPath}/book.jsp">struts2  book  test</a>
-    <a href="${pageContext.request.contextPath}/product.jsp">struts2  product  test</a>
+    <a href="${pageContext.request.contextPath}/product.jsp">struts2  product  test</a><br>
+    <a href="${pageContext.request.contextPath}/login.jsp">struts2  login</a><br>
 </body>
 <script type="text/javascript">
 
