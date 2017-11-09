@@ -12,6 +12,10 @@
     <a href="${pageContext.request.contextPath}/book.jsp">struts2  book  test</a>
     <a href="${pageContext.request.contextPath}/product.jsp">struts2  product  test</a><br>
     <a href="${pageContext.request.contextPath}/login.jsp">struts2  login</a><br>
+    参数接收相关<br/>
+    <a href="${pageContext.request.contextPath}/login1.jsp">struts2  login1</a><br>
+    <a href="${pageContext.request.contextPath}/login2.jsp">struts2  login2</a><br>
+    <a href="${pageContext.request.contextPath}/login3.jsp">struts2  login3</a><br>
 </body>
 <script type="text/javascript">
 

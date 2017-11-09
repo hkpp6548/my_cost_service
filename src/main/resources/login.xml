@@ -15,6 +15,20 @@
 			<result name="login" type="dispatcher">/login.jsp</result>
 			<result name="success" type="redirect">/demo1_success.jsp</result>
 		</action>
+
+		<action name="login1" class="com.skyhuang.struts2.study.web.controller.Login1Action">
+			<result name="failer">/login1.jsp</result>
+			<result type="redirect">/demo1_success.jsp</result>
+		</action>
+
+		<action name="login2" class="com.skyhuang.struts2.study.web.controller.Login2Action">
+			<result name="failer">/login2.jsp</result>
+			<result type="redirect">/demo1_success.jsp</result>
+		</action>
+		<action name="login3" class="com.skyhuang.struts2.study.web.controller.Login3Action">
+			<result name="failer">/login3.jsp</result>
+			<result type="redirect">/demo1_success.jsp</result>
+		</action>
 		<!-- <action name="*_*" class="cn.itcast.action.{1}Action" method="{2}"></action>-->
 		 <!--<action name="book" class="cn.itcast.action.BookAction"></action>-->
 	</package>
