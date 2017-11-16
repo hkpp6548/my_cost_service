@@ -1,2 +1,2 @@
-# my_cost_service
-1.我的花费小玩意
+#struts2-employee-manage
+struts2 +  构建简单的员工管理系统。
