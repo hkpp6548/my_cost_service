@@ -204,7 +204,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
             this.addActionError("登录失败");
             return Action.LOGIN;
         }
-
         return "login_success";
     }
 
