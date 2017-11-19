@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page isELIgnored="false" %>
 <script type="text/javascript">
 function ini(){
    document.form1.logonName.focus();
