@@ -71,7 +71,6 @@
 	</c:if>
     </form>
 <script>
-    console.log(111);
     $("#form1table").tablesorter();
     parse("form1table");
 </script>

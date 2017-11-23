@@ -31,6 +31,7 @@ public class WRListServlet extends HttpServlet {
         response.setContentType("text/html;chartset=utf-8");
         //调用服务
         WeightRecordService service = new WeightRecordService();
+
         //分页 （可在前端判断）
         String currentPage = request.getParameter("currentPage");
         if(StringUtils.isEmpty(currentPage)){

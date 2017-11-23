@@ -12,7 +12,7 @@ import java.util.Map;
 /** 全局编码过滤
  * Created by hk on 2017/10/9.
  */
-@WebFilter(filterName = "Encoding2Filter",urlPatterns = "/*")
+//@WebFilter(filterName = "Encoding2Filter",urlPatterns = "/*")
 public class Encoding2Filter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
