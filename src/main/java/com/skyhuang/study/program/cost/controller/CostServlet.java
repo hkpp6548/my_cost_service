@@ -37,6 +37,34 @@ public class CostServlet extends HttpServlet {
             add(request, response);
         } else if ("selectById".equals(method)){
             selectById(request, response);
+        } else if ("updateById".equals(method)){
+            updateById(request, response);
+        }
+    }
+
+    private void updateById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=utf-8");
+        Cost wr = new Cost();
+        DateConverter dc = new DateConverter(); // 这是一个日期类型转换器.
+        dc.setPattern("yyyy-MM-dd");
+        ConvertUtils.register(dc, java.util.Date.class);
+        try {
+            BeanUtils.populate(wr, request.getParameterMap());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        CostService service = new CostService();
+        try {
+            service.updateById(wr);
+            response.getWriter().write("修改成功,1秒后将跳到列表界面");
+            response.setHeader("refresh","1;url=/cost?method=list");
+            //response.sendRedirect("/weightRecord/list");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.getWriter().write("修改失败,1秒后将跳到列表界面");
+            response.setHeader("refresh","3;url=/cost?method=list");
         }
     }
 

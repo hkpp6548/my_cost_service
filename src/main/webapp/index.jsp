@@ -10,15 +10,15 @@
     <title>欢迎访问skyhuang首页</title>
 </head>
 <body>
-<form id="f" action="${pageContext.request.contextPath}/index.jsp" method="post">
+<%--<form id="f" action="${pageContext.request.contextPath}/index.jsp" method="post">
     <select name="selectcountry" onchange="sendForm()">
         <option>--请选择国家--</option>
         <option value="zn-CN">中国</option>
         <option value="en-US">US</option>
-        <%--<option value="zn_CN">中国</option>
-        <option value="en_US">US</option>--%>
+        &lt;%&ndash;<option value="zn_CN">中国</option>
+        <option value="en_US">US</option>&ndash;%&gt;
     </select>
-</form>
+</form>--%>
 
 <%
     String country = request.getHeader("accept-language");
@@ -109,7 +109,7 @@
 <script type="text/javascript">
 
     window.onload = function () {
-        alert("test");
+        //alert("test");
     }
     
     function test() {

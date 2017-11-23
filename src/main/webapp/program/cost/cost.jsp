@@ -33,6 +33,7 @@
                     <th>花费类型</th>
                     <th>金额</th>
                     <th>备注</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,6 +49,11 @@
                         <td>${c.costType}</td>
                         <td>${c.money }</td>
                         <td>${c.remark}</td>
+                        <td>
+                            <c:if test="${user != null }">
+                                <a href="${pageContext.request.contextPath}/cost?method=selectById&id=${c.id}">编辑</a>
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -62,4 +62,10 @@ public class CostDao {
         Cost query = queryRunner.query(selectById, new BeanHandler<Cost>(Cost.class), id);
         return query;
     }
+
+    public void updateById(Cost wr) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String updateByIdSql = "update cost set date=?,incomeAndOutType=?,costType=?, money=?, remark=? where id=?";
+        queryRunner.update(updateByIdSql, wr.getDate(), wr.getIncomeAndOutType(), wr.getCostType(), wr.getMoney(),wr.getRemark(), wr.getId());
+    }
 }

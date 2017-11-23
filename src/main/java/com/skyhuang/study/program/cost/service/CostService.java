@@ -25,4 +25,8 @@ public class CostService {
     public Cost selectById(int id) throws SQLException {
         return costDao.selectById(id);
     }
+
+    public void updateById(Cost wr) throws SQLException {
+        costDao.updateById(wr);
+    }
 }
