@@ -13,6 +13,7 @@
 <title>体重记录列表</title>
 </head>
 <body>
+<%@include file="/program/common/navigation_bar.jsp" %>
 	<c:if test="${empty wr}">
 		无记录
 	</c:if>

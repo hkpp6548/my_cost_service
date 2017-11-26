@@ -6,6 +6,7 @@
     <title>上传文件</title>
   </head>
   <body>
+  <%@include file="/program/common/navigation_bar.jsp" %>
     <div class="red">${message}</div>
     <%--<input type="button" id="add" value="多文件上传" onclick="addFile()">--%>
 	<form action="${pageContext.request.contextPath}/uploadServlet" method="post" encType="multipart/form-data">

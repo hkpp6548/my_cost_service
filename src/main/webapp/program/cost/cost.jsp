@@ -13,6 +13,7 @@
 <title>收支记录列表</title>
 </head>
 <body>
+<%@include file="/program/common/navigation_bar.jsp" %>
     <c:if test="${user == null }">
         请先登录
     </c:if>

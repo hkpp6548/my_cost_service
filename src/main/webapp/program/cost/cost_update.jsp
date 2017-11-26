@@ -9,6 +9,7 @@
 <title>收支记录更新</title>
 </head>
 <body>
+<%@include file="/program/common/navigation_bar.jsp" %>
 	<form action="${pageContext.request.contextPath}/cost?method=updateById" method="post">
 		<a href="${pageContext.request.contextPath}/cost/list">返回列表界面</a>
 		<table border="1" align="center" width="65%">

@@ -9,6 +9,7 @@
     <title>上传下载服务页面</title>
 </head>
 <body>
+<%@include file="/program/common/navigation_bar.jsp" %>
     <h2>请选择您需要的服务</h2>
     <%--上传--%>
     <a href="upload.jsp">上传</a>

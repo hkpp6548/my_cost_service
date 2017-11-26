@@ -11,6 +11,7 @@
     <title>下载文件</title>
   </head>
   <body>
+  <%@include file="/program/common/navigation_bar.jsp" %>
     <div class="red">${message}</div>
     简单文件下载列表
     <table border="0" id="form1table" align="center" width="100%" class="tablestyle">

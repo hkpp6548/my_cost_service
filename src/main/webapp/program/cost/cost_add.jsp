@@ -9,6 +9,7 @@
 <title>收支记录新增</title>
 </head>
 <body>
+<%@include file="/program/common/navigation_bar.jsp" %>
 <a href="${pageContext.request.contextPath}/cost/list">返回列表界面</a>
 	<form action="${pageContext.request.contextPath}/cost?method=add" method="post">
 		<table border="1" width="50%">
