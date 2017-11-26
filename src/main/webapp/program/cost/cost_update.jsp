@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/cost?method=updateById" method="post">
-		<a href="${pageContext.request.contextPath}/cost?method=list">返回列表界面</a>
+		<a href="${pageContext.request.contextPath}/cost/list">返回列表界面</a>
 		<table border="1" align="center" width="65%">
 			<tr>
 				<td><input type="checkbox"></td>

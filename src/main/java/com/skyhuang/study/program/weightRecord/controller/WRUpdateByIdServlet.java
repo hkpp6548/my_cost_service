@@ -28,7 +28,7 @@ public class WRUpdateByIdServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//验证用户信息
 		CheckSessionUser.checkUser(request, response);
-
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		WeightRecord wr = new WeightRecord();
 		DateConverter dc = new DateConverter(); // 这是一个日期类型转换器.
@@ -44,13 +44,13 @@ public class WRUpdateByIdServlet extends HttpServlet {
 		WeightRecordService service = new WeightRecordService();
 		try {
 			service.updateById(wr);
-			response.getWriter().write("修改成功,3秒后将跳到列表界面");
-			response.setHeader("refresh","3;url=/weightRecord/list");
+			response.getWriter().write("修改成功,1秒后将跳到列表界面");
+			response.setHeader("refresh","1;url=/weightRecord/list");
 			//response.sendRedirect("/weightRecord/list");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.getWriter().write("修改失败,3秒后将跳到列表界面");
-			response.setHeader("refresh","3;url=/weightRecord/list");
+			response.getWriter().write("修改失败,1秒后将跳到列表界面");
+			response.setHeader("refresh","1;url=/weightRecord/list");
 		}
 	}
 }

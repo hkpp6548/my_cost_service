@@ -59,12 +59,12 @@ public class CostServlet extends HttpServlet {
         try {
             service.updateById(wr);
             response.getWriter().write("修改成功,1秒后将跳到列表界面");
-            response.setHeader("refresh","1;url=/cost?method=list");
+            response.setHeader("refresh","1;url=/cost/list");
             //response.sendRedirect("/weightRecord/list");
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().write("修改失败,1秒后将跳到列表界面");
-            response.setHeader("refresh","3;url=/cost?method=list");
+            response.setHeader("refresh","3;url=/cost/list");
         }
     }
 
@@ -103,7 +103,7 @@ public class CostServlet extends HttpServlet {
         try {
             service.insert(cost);
             System.out.println("新增成功！");
-            response.sendRedirect("/cost?method=list");
+            response.sendRedirect("/cost/list");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("新增失败！");

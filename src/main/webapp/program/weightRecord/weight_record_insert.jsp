@@ -9,6 +9,7 @@
 <title>体重记录新增</title>
 </head>
 <body>
+	<a href="${pageContext.request.contextPath}/weightRecord/list">返回列表界面</a>
 	<form action="${pageContext.request.contextPath}/weightRecord/insert" method="post">
 		<table border="1" width="50%">
 			<tr>

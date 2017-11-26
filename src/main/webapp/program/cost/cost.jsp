@@ -18,6 +18,7 @@
     </c:if>
     <c:if test="${user != null }">
         <a href="${pageContext.request.contextPath}/program/cost/cost_add.jsp">新增</a>
+        <form action="${pageContext.request.contextPath}/cost/list">
         <c:if test="${empty wr}">
             无记录
         </c:if>
@@ -60,9 +61,9 @@
             </table>
             <%@include file="/program/weightRecord/pageturning.jsp" %>
         </c:if>
+        </form>
     </c:if>
 <script>
-    console.log(111);
     $("#form1table").tablesorter();
     parse("form1table");
 </script>
