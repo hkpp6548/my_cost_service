@@ -45,7 +45,7 @@
 	<property name="c3p0.idle_test_period">3000</property>-->
 
 	<!-- 通知Hibernate加载那些映射文件 -->
-	<mapping resource="com/skyhuang/hibernate/study/domain/Customer.hbm.xml" />
+	<mapping resource="hibernate/Customer.hbm.xml" />
 
 </session-factory>
 </hibernate-configuration>

@@ -25,8 +25,8 @@ public class HibernateTest1 {
 
         // 向数据库中插入一条记录:
         Customer customer = new Customer();
-        customer.setName("苍老师");
-        customer.setAge(38);
+        customer.setName("苍老师2");
+        customer.setAge(28);
 
         session.save(customer);
 
