@@ -13,7 +13,7 @@
         <!-- 使用id的标签 配置唯一属性 -->
         <!-- 在<id>标签中配置一个主键的生成策略. -->
         <id name="id" column="id">
-            <generator class="assigned"/>
+            <generator class="native"/>
         </id>
 
         <!-- 普通属性 -->

@@ -87,7 +87,7 @@ public class HibernateTest1 {
     public void demo5(){
         // 1.加载核心配置文件
         Configuration configuration = new Configuration().configure();
-        // 手动编码加载映射文件:
+        // 手动编码加载映射文件:(在核心配置文件中没有配置映射文件的时候需要手动编码配置)
         // configuration.addResource("cn/itcast/hibernate3/demo1/Customer.hbm.xml");
         // configuration.addClass(Customer.class);
         // 2.构建Session工厂
@@ -224,7 +224,7 @@ public class HibernateTest1 {
         // 5.业务逻辑操作
         // 向数据库中插入一条记录:
         Customer customer = new Customer();
-        customer.setName("苍老师2");
+        customer.setName("苍老师3");
         customer.setAge(28);
         session.save(customer);
 

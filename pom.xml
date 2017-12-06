@@ -75,6 +75,14 @@
 			<version>3.6.10.Final</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>3.6.10.Final</version>
+		</dependency>
+
+
 		<!-- mysql jdbc依赖 -->
 		<dependency>
 			<groupId>mysql</groupId>
