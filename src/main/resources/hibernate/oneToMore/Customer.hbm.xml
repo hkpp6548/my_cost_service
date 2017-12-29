@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.skyhuang.hibernate.study.domain.oneToMore.Customer" table="customer">
+        <!-- 配置唯一标识 -->
+        <id name="cid" column="cid">
+            <generator class="native"/>
+        </id>
+        <!-- 配置普通属性 -->
+        <property name="cname" column="cname" length="20"/>
+
+        <!-- 建立映射 -->
+        <!-- 配置一个集合 <set>的name Customer对象中的关联对象的属性名称. -->
+        <set name="orders" cascade="save-update" inverse="true">
+            <!-- <key>标签中column:用来描述一对多多的一方的外键的名称. -->
+            <key column="cno"></key>
+            <!-- 配置一个<one-to-many>标签中class属性:订单的类的全路径 -->
+            <one-to-many class="com.skyhuang.hibernate.study.domain.oneToMore.Order"/>
+        </set>
+    </class>
+</hibernate-mapping>

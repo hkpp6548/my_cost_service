@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.skyhuang.hibernate.study.domain.oneToMore.Order" table="orders">
+        <!-- 配置唯一标识  -->
+        <id name="oid" column="oid">
+            <generator class="native"/>
+        </id>
+        <!-- 配置普通属性 -->
+        <property name="addr" column="addr" length="50"/>
+        <!-- 配置映射 -->
+        <!--
+        <many-to-one>标签
+            name 	:关联对象的属性的名称.
+            column	:表中的外键名称.
+            class	:关联对象类的全路径
+        -->
+        <many-to-one name="customer" column="cno" class="com.skyhuang.hibernate.study.domain.oneToMore.Customer"/>
+    </class>
+</hibernate-mapping>
