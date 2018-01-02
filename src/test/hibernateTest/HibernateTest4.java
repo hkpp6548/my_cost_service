@@ -62,7 +62,7 @@ public class HibernateTest4 {
 
         Order order = (Order) session.get(Order.class, 1);
 
-        customer.getOrders().remove(order);//解除关系
+        customer.getOrders().remove(order);//解除关系  orders会删除数据
 
         tx.commit();
         session.close();

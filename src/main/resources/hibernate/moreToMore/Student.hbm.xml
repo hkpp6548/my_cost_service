@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.skyhuang.hibernate.study.domain.moreToMore.Student" table="student">
+        <!-- 配置唯一标识 -->
+        <id name="sid" column="sid">
+            <generator class="native"/>
+        </id>
+        <!-- 配置普通属性 -->
+        <property name="sname" column="sname" length="20" />
+        <!-- 配置关联映射 -->
+        <!-- <set>标签 name:对应学生中的课程集合的名称   table:中间表名称. -->
+        <set name="courses" table="stu_cour" cascade="save-update,delete">
+            <!-- <key>中column写 当前类在中间表的外键.-->
+            <key column="sno"></key>
+            <!-- <many-to-many>中class:另一方类的全路径. column:另一方在中间表中外键名称-->
+            <many-to-many column="cno" class="com.skyhuang.hibernate.study.domain.moreToMore.Course"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

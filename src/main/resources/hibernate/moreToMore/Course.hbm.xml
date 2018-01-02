@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.skyhuang.hibernate.study.domain.moreToMore.Course" table="course">
+        <!-- 配置唯一标识 -->
+        <id name="cid" column="cid">
+            <generator class="native"/>
+        </id>
+        <!-- 配置普通属性 -->
+        <property name="cname" column="cname" length="20" />
+        <!-- 配置关联映射 -->
+        <!-- <set>标签 name:对应学生中的课程集合的名称   table:中间表名称. -->
+        <!-- inverse="true" 放弃维护外键的能力 由主动的学生来维护外键能力-->
+        <set name="students" table="stu_cour" inverse="true">
+            <!-- <key>中column写 当前类在中间表的外键.-->
+            <key column="cno"></key>
+            <!-- <many-to-many>中class:另一方类的全路径. column:另一方在中间表中外键名称-->
+            <many-to-many column="sno" class="com.skyhuang.hibernate.study.domain.moreToMore.Student"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
