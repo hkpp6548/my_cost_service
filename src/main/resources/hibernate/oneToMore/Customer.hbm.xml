@@ -13,7 +13,8 @@
 
         <!-- 建立映射 -->
         <!-- 配置一个集合 <set>的name Customer对象中的关联对象的属性名称. -->
-        <set name="orders" cascade="save-update" inverse="true">
+        <!-- cascade="save-update" 级联操作：保存或更新的时候同时会保存orders。多个逗号隔开 -->
+        <set name="orders" cascade="save-update,delete,delete-orphan" inverse="true">
             <!-- <key>标签中column:用来描述一对多多的一方的外键的名称. -->
             <key column="cno"></key>
             <!-- 配置一个<one-to-many>标签中class属性:订单的类的全路径 -->

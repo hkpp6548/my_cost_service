@@ -16,7 +16,11 @@
             name 	:关联对象的属性的名称.
             column	:表中的外键名称.
             class	:关联对象类的全路径
+            cascade="save-update"   :级联保存，保存的时候会级联保存或者更新customer,多个逗号隔开
         -->
-        <many-to-one name="customer" column="cno" class="com.skyhuang.hibernate.study.domain.oneToMore.Customer"/>
+        <many-to-one name="customer"
+                     column="cno"
+                     class="com.skyhuang.hibernate.study.domain.oneToMore.Customer"
+                     cascade="save-update"/>
     </class>
 </hibernate-mapping>

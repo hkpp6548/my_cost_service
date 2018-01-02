@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
-/** 一对多测试
+/** 一对多测试  级联关系
  * Created by dahoufang the one on 2017/12/27.
  */
 public class HibernateTest4 {
@@ -35,7 +35,7 @@ public class HibernateTest4 {
 
     @Test
     // 双向维护:自动更新数据库,产生多余的SQL.
-    // 双方都有外键的维护能力.必须让其中一方放弃外键的维护权.(一般情况下都是一的放弃.)
+    // 双方都有外键的维护能力.必须让其中一方放弃外键的维护权.(一般情况下都是一的放弃.)inverse="true"
     public void demo10(){
         Session session = HibernateUtils.openSession();
         Transaction tx = session.beginTransaction();
@@ -62,7 +62,7 @@ public class HibernateTest4 {
 
         Order order = (Order) session.get(Order.class, 1);
 
-        customer.getOrders().remove(order);
+        customer.getOrders().remove(order);//解除关系
 
         tx.commit();
         session.close();
@@ -98,7 +98,7 @@ public class HibernateTest4 {
 
     @Test
     // 删除一个客户:
-    // 默认的情况下,将外键置为null,删除数据记录.
+    // 默认的情况下,将外键置为null,删除数据记录.（没有设置级联删除）
     public void demo6(){
         Session session = HibernateUtils.openSession();
         Transaction tx = session.beginTransaction();
@@ -139,7 +139,7 @@ public class HibernateTest4 {
 
         // session.save(order1); // 共发送4条insert语句:
         // session.save(customer);// 共发送3条insert语句:
-        session.save(order2);
+        session.save(order2);//功发送一条insert语句：
 
         tx.commit();
         session.close();
@@ -196,7 +196,8 @@ public class HibernateTest4 {
     }
 
     @Test
-    // 保存客户和订单的时候,是否可以只保存其中的一方?不行的报一个异常:一个持久态对象关联一个瞬时的对象.
+    // 保存客户和订单的时候,是否可以只保存其中的一方?
+    // 不行的报一个异常:一个持久态对象关联一个瞬时的对象.
     public void demo2(){
         Session session = HibernateUtils.openSession();
         Transaction tx = session.beginTransaction();

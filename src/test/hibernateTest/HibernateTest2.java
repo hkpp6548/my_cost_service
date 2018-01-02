@@ -13,7 +13,7 @@ import org.junit.Test;
 import java.io.Serializable;
 import java.util.List;
 
-/** 使用工具类进行
+/** 使用抽取工具类进行测试
  * Created by hk on 2017/11/30.
  */
 public class HibernateTest2 {

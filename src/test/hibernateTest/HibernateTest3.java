@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.junit.Test;
 
-/** hibernate 以及缓存
+/** hibernate 一级缓存
  * Created by dahoufang the one on 2017/12/27.
  */
 public class HibernateTest3 {
