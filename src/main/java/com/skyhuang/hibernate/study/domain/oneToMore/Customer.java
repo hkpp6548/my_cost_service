@@ -29,4 +29,12 @@ public class Customer {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "cid=" + cid +
+                ", cname='" + cname + '\'' +
+                '}';
+    }
 }
