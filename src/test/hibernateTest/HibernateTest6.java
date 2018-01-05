@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 
@@ -17,6 +18,131 @@ import java.util.List;
  * Created by dahoufang the one on 2018/1/3.
  */
 public class HibernateTest6 {
+
+    @Test
+	/*
+	 * 离线条件查询
+	 */
+    public void demo15(){
+        // web层的封装
+        DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
+        criteria.add(Restrictions.eq("cname", "小明"));
+        criteria.add(Restrictions.eq("cid", 2));
+
+        // 传递到DAO层
+        Session session = HibernateUtils.openSession();
+        Transaction tx = session.beginTransaction();
+
+        Criteria c1 = criteria.getExecutableCriteria(session);
+        List<Customer> list = c1.list();
+
+        System.out.println(list);
+        tx.commit();
+        session.close();
+    }
+
+    @Test
+	/*
+	 * 命名查询
+	 */
+    public void demo14(){
+        Session session = HibernateUtils.openSession();
+        Transaction tx = session.beginTransaction();
+
+        List<Customer> list = session.getNamedQuery("findAll").list();
+        System.out.println(list);
+
+        tx.commit();
+        session.close();
+    }
+
+    @Test
+	/*
+	 * 聚集函数
+	 */
+    public void demo13(){
+        Session session = HibernateUtils.openSession();
+        Transaction tx = session.beginTransaction();
+
+        Long count = (Long) session.createQuery("select count(*) from Order")
+                .uniqueResult();
+        System.out.println(count);
+
+        tx.commit();
+        session.close();
+    }
+
+    @Test
+	/*
+	 * 多表查询:
+	 */
+    public void demo12(){
+        Session session = HibernateUtils.openSession();
+        Transaction tx = session.beginTransaction();
+
+        // 内连接查询的是两个表的交集部分:
+		/*Query query = session.createQuery("from Customer c inner join c.orders");
+		List<Object[]> list = query.list();
+		for (Object[] objects : list) {
+			System.out.println(Arrays.toString(objects));
+		}*/
+
+        // 迫切内连接:使用一个关键字 fetch(HQL)
+        Query query = session.createQuery("select distinct c from Customer c  inner join fetch c.orders");
+        List<Customer> list = query.list();
+        for (Customer customer : list) {
+            System.out.println(customer);
+        }
+
+        tx.commit();
+        session.close();
+    }
+
+    @Test
+	/*
+	 * 模糊查询:
+	 */
+    public void demo11() {
+        Session session = HibernateUtils.openSession();
+        Transaction tx = session.beginTransaction();
+
+        // HQL
+		/*Query query = session.createQuery("from Customer where cname like ?");
+		query.setParameter(0, "小%");
+		List<Customer> list = query.list();
+		System.out.println(list);*/
+
+        // QBC:
+        Criteria criteria = session.createCriteria(Customer.class);
+        criteria.add(Restrictions.like("cname", "大%"));
+        List<Customer> list = criteria.list();
+        System.out.println(list);
+
+        tx.commit();
+        session.close();
+    }
+
+    @Test
+	/*
+	 * QBC条件检索
+	 */
+    public void demo10() {
+        Session session = HibernateUtils.openSession();
+        Transaction tx = session.beginTransaction();
+
+		 /*List<Customer> list = session.createCriteria(Customer.class).
+                 add(Restrictions.eq("cname", "小红")).list();
+		 System.out.println(list);*/
+
+
+        List<Customer> list = session.createCriteria(Customer.class)
+                .add(Restrictions.eq("cname", "小红"))
+                .add(Restrictions.eq("cid", 1)).list();
+        System.out.println(list);
+
+        tx.commit();
+        session.close();
+    }
 
 
     @Test
@@ -34,7 +160,8 @@ public class HibernateTest6 {
 		     System.out.println(Arrays.toString(objects));
 		 }*/
 
-        List<Customer> list = session.createQuery("select new Customer(cname) from Customer").list();
+        List<Customer> list = session.createQuery(
+                "select new Customer(cname) from Customer").list();
         System.out.println(list);
 
         tx.commit();
