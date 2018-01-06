@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** 测试用
  * Created by dahoufang the one on 2017/8/29.
@@ -16,7 +18,7 @@ public class TestController {
 	public static void main (String args[])
 	{
 
-		int a  = 2 << 3;
+		/*int a  = 2 << 3;
 		System.out.println(a);
 		try
 		{
@@ -31,16 +33,32 @@ public class TestController {
 			SimpleDateFormat sdfSSS = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String format = sdfSSS.format(date);
 			System.out.println(format);
-			/*TimeZone tz = sdf.getTimeZone();
+			*//*TimeZone tz = sdf.getTimeZone();
 			Calendar c = sdf.getCalendar();
 			System.out.println("Display name: " +tz.getDisplayName());
-			System.out.println(getString(c));*/
+			System.out.println(getString(c));*//*
 		}
 		catch(ParseException pe)
 		{
 			System.out.println("Error offset: " + pe.getErrorOffset());
 			pe.printStackTrace();
-		}
+		}*/
+
+		testPattern();
+	}
+
+	public static void testPattern(){
+		// 要验证的字符串
+		String str = "a2b$";
+		String regEx = "^[a-zA-Z]\\w{3,15}$";
+		// 编译正则表达式
+		Pattern pattern = Pattern.compile(regEx);
+		// 忽略大小写的写法
+		// Pattern pat = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(str);
+		// 字符串是否与正则表达式相匹配
+		boolean rs = matcher.matches();
+		System.out.println(rs);
 	}
 
 
