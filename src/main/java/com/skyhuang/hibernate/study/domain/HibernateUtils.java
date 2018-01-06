@@ -14,12 +14,26 @@ public class HibernateUtils {
     private static SessionFactory sessionFactory;
 
     static {
+        //加载核心配置文件
         configuration = new Configuration().configure();
+        //构建Session工厂
         sessionFactory = configuration.buildSessionFactory();
     }
 
+    /**
+     *  获取session
+     * @return
+     */
     public static Session openSession(){
         return sessionFactory.openSession();
+    }
+
+    /**
+     * 获取当前线程里的同一个session
+     * @return
+     */
+    public static Session getCurrentSession(){
+        return sessionFactory.getCurrentSession();
     }
 
 }

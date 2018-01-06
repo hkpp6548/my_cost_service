@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-/**
+/** Hibernate的抓取策略
  * Created by hk on 2018/1/5.
  */
 public class HibernateTest7 {

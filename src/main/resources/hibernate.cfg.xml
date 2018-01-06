@@ -44,12 +44,16 @@
 
 
 	<!--
+	    设置事务的隔离级别
 		1—Read uncommitted isolation
 		2—Read committed isolation
 		4—Repeatable read isolation
 		8—Serializable isolation
 	 -->
 	<property name="hibernate.connection.isolation">4</property>
+
+    <!-- 使用当前线程中的session,共用一个session -->
+    <property name="hibernate.current_session_context_class">thread</property>
 
 	<!-- 通知Hibernate加载那些映射文件 -->
 	<!--<mapping resource="hibernate/Customer.hbm.xml" />-->  <!-- 暂时关闭，测试一对多 -->
