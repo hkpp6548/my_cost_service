@@ -171,7 +171,7 @@ public class HibernateTest1 {
 		session.update(customer);*/
         // 5.2先查询在修改的方式
         Customer customer = (Customer) session.get(Customer.class, 1);
-        customer.setName("凤姐");
+        //customer.setName("凤姐");
         session.update(customer);
         // 6.事务提交
         tx.commit();
@@ -224,7 +224,7 @@ public class HibernateTest1 {
         // 5.业务逻辑操作
         // 向数据库中插入一条记录:
         Customer customer = new Customer();
-        customer.setName("苍老师3");
+        //customer.setName("苍老师3");
         customer.setAge(28);
         session.save(customer);
 

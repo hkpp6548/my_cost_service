@@ -126,7 +126,7 @@ public class HibernateTest2 {
 		session.update(customer);*/
         // 5.2先查询在修改的方式
         Customer customer = (Customer) session.get(Customer.class, 1);
-        customer.setName("凤姐");
+        //customer.setName("凤姐");
         session.update(customer);
 
         tx.commit();
@@ -139,8 +139,8 @@ public class HibernateTest2 {
         Session session = HibernateUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Customer customer = new Customer();
-        customer.setId(5);
-        customer.setName("天海翼");
+        /*customer.setId(5);
+        customer.setName("天海翼");*/
         customer.setAge(18);
         System.out.println("事物是否提交：" + transaction.wasCommitted());
         session.saveOrUpdate(customer);
@@ -155,7 +155,7 @@ public class HibernateTest2 {
         Session session = HibernateUtils.openSession();
         Transaction tx = session.beginTransaction();
         Customer customer = new Customer();
-        customer.setName("su_cute");
+        //customer.setName("su_cute");
         customer.setAge(28);
         Serializable id = session.save(customer);
         System.out.println(id);
