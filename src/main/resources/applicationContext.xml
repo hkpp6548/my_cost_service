@@ -4,26 +4,39 @@
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+	<!-- demo4Bean的生命周期==================================== -->
+
+	 <bean id="customerService" class="com.skyhuang.spring3.demo4.CustomerServiceImpl" init-method="setup" destroy-method="teardown">
+		<property name="name" value="itcast"/>
+	</bean>
+
+	<bean class="com.skyhuang.spring3.demo4.MyBeanPostProcessor"/>
+	<!-- demo4Bean的生命周期==================================== end-->
+
+
+
 	<!-- demo3Bean的作用范围==================================== start-->
-
-	<bean id="testCustomer" class="com.skyhuang.spring3.demo3.TestCustomer" scope="singleton"/>
-
+	<!--<bean id="testCustomer" class="com.skyhuang.spring3.demo3.TestCustomer" scope="singleton"/>-->
+	<bean id="product" class="com.skyhuang.spring3.demo3.Product" init-method="setup" destroy-method="teardown">
+		<property name="name" value="空调"/>
+	</bean>
 	<!-- demo3Bean的作用范围==================================== end-->
 
 	<!-- demo2Bean的实例化==================================== start-->
 	<!-- 默认情况下使用的就是无参数的构造方法. -->
-	<bean id="bean1" class="com.skyhuang.spring3.demo2.Bean1"/>
+	<!--<bean id="bean1" class="com.skyhuang.spring3.demo2.Bean1"/>-->
 	<!-- 第二种使用静态工厂实例化 -->
-	 <bean id="bean2" class="com.skyhuang.spring3.demo2.Bean2Factory" factory-method="getBean2"/>
+	 <!--<bean id="bean2" class="com.skyhuang.spring3.demo2.Bean2Factory" factory-method="getBean2"/>
 	 <bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"/>
-	 <bean id="bean3Factory" class="com.skyhuang.spring3.demo2.Bean3Factory"/>
+	 <bean id="bean3Factory" class="com.skyhuang.spring3.demo2.Bean3Factory"/>-->
 	<!-- demo2Bean的实例化==================================== end-->
 
 	<!-- demo1快速入门==================================== start-->
 	<!-- 通过一个<bean>标签设置类的信息,通过id属性为类起个标识. -->
-	<bean id="helloService" class="com.skyhuang.spring3.demo1.HelloServiceImpl">
-		<!-- 使用<property>标签注入属性 -->
+	<!--<bean id="helloService" class="com.skyhuang.spring3.demo1.HelloServiceImpl">
+		&lt;!&ndash; 使用<property>标签注入属性 &ndash;&gt;
 		<property name="info" value="传智播客(磁盘路径)"/>
-	</bean>
+	</bean>-->
 	<!-- demo1快速入门==================================== end-->
 </beans>

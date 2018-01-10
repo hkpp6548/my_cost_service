@@ -1,5 +1,6 @@
 package spring3Test;
 
+import com.skyhuang.spring3.demo3.Product;
 import com.skyhuang.spring3.demo3.TestCustomer;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -19,5 +20,15 @@ public class SpringTest3 {
 
         TestCustomer c2 = (TestCustomer) applicationContext.getBean("testCustomer");
         System.out.println(c2);
+    }
+
+    @Test
+    // 测试初始化和销毁的方法
+    public void demo2(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+                "applicationContext.xml");
+        Product p1 = (Product) applicationContext.getBean("product");
+        System.out.println(p1);
+        applicationContext.close();
     }
 }
