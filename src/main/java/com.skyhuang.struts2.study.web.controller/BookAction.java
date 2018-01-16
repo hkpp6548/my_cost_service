@@ -30,4 +30,5 @@ public class BookAction extends ActionSupport {
 		System.out.println("book  search");
 		return NONE;
 	}
+
 }

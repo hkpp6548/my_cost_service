@@ -15,5 +15,6 @@
     <include file="book.xml"></include>
     <include file="product.xml"></include>  <!--通配符配置-->
     <include file="login.xml"></include>
+    <include file="test.xml"></include>
 
 </struts>

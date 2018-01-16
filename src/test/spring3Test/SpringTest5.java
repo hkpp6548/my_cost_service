@@ -1,5 +1,7 @@
 package spring3Test;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.skyhuang.spring3.demo5.Car;
 import com.skyhuang.spring3.demo5.Car2;
 import com.skyhuang.spring3.demo5.Person;
@@ -44,4 +46,5 @@ public class SpringTest5 {
         CollectionBean collectionBean = (CollectionBean) applicationContext.getBean("collectionBean");
         System.out.println(collectionBean);
     }
+
 }
